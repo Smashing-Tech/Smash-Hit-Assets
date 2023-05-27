@@ -2017,7 +2017,7 @@ Name: assets/segments/cave/narrow/door.xml.gz.mp3
 SHA1-Digest: snrohW4+6HCLXM0m6KX1s+RiEUg=
 
 Name: AndroidManifest.xml
-SHA1-Digest: bq4Cpmuimgcg8qEt+hil+03KDAo=
+SHA1-Digest: wZLLoxhYTOSz6rTG2EsU9nYUjNs=
 
 Name: assets/segments/river/tunnel/start.xml.gz.mp3
 SHA1-Digest: 5Oxc/oNHCEHwrcLK16Xp+RG5oO0=
@@ -2316,7 +2316,7 @@ Name: assets/hud/localize_es/pausemenu.png.mtx.mp3
 SHA1-Digest: o6h5DRSHCSDc4oALAPfS0Wfhg1g=
 
 Name: assets/sig.mp3
-SHA1-Digest: KCGJUTYtCtWNLhOEEuXXnjksuVk=
+SHA1-Digest: aUIdsbCAvwx2gu39jRd6RXGMDy8=
 
 Name: assets/menu/loading_dot.png.mtx.mp3
 SHA1-Digest: XKZODTf4q6sqZihCXlLVuWeoaKA=
@@ -5124,7 +5124,7 @@ Name: assets/menu/localize_it/upgrade_cloud.png.mtx.mp3
 SHA1-Digest: QWjd2FtAs7g1Jquopaz08kX4ABg=
 
 Name: classes.dex
-SHA1-Digest: R3G/BTkG3tG8UQ94bAktB3GhLcs=
+SHA1-Digest: vPsVDrfPfDBdAASTjc9K82bXYxo=
 
 Name: assets/segments/cave2/top/16_4.xml.gz.mp3
 SHA1-Digest: 19WGCAHJ3eF0u8QYd1TDpHCMJRA=
@@ -6008,7 +6008,7 @@ Name: assets/menu/upgrade_statistics.png.mtx.mp3
 SHA1-Digest: lVhMLyfl/I6yNl4o1MawvXVYmY4=
 
 Name: lib/armeabi-v7a/libsmashhit.so
-SHA1-Digest: tJ0doM5449Bq3e5LL04PaTv/lFk=
+SHA1-Digest: 7APl6Mxhi+OKtoadktQnwWOsyuM=
 
 Name: assets/segments/night/part3/door.xml.gz.mp3
 SHA1-Digest: qW+2upaoNWbx3LncBsR8cYhqRzE=
