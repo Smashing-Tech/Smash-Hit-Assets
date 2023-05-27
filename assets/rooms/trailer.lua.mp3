@@ -1,0 +1,19 @@
+function init()
+
+	mgFogColor(.4, 1.2, 1.4, .2, 0, .1)
+	mgMusic("moregames") 
+	mgLowPass(0.2)
+	mgReverb(0.2, 0.5, 0.2) 
+	mgEcho(0.2, 0.3, 0.5, 0.4) 
+	mgGravity(.4)
+	
+	l = 0
+	while(l<200) do
+		l = l + mgSegment("trailer_start", -l)
+	end
+
+	mgLength(l)
+end
+
+function tick()
+end

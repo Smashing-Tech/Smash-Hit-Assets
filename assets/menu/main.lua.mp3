@@ -1,0 +1,1092 @@
+
+function startsWith(str,start)
+   return string.sub(str,1,string.len(start))==start
+end
+
+function getFirst(str)
+	i = string.find(str, " ")
+	if i > 0 then
+		return string.sub(str, 1, i-1)
+	end
+	return ""
+end
+
+function getSecond(str)
+	i = string.find(str, " ")
+	if i > 0 then
+		i = i + 1
+		return string.sub(str, i, string.len(str))
+	end
+	return ""
+end
+
+levelCount = 11
+
+
+function init()
+	top = tonumber(mgGet("display.visibleTop"))
+	left = tonumber(mgGet("display.visibleLeft"))
+	right = tonumber(mgGet("display.visibleRight"))
+	bottom = tonumber(mgGet("display.visibleBottom"))
+	centerX = (left+right)*0.5
+	centerY = (top+bottom)*0.5
+	
+	platform = mgGet("game.platform")
+
+	levelCanvas = mgCreateCanvas(1024*13, 2048)
+	mgSetCanvasWindow(levelCanvas, 0, 0, 2048, 1536)
+	mgSetCanvasMovable(levelCanvas, "x")
+	
+	loadingLogo = mgCreateImage("logo.png")
+	mgSetOrigo(loadingLogo, "center")
+	mgSetPos(loadingLogo, centerX+4, top+203)
+	
+	loadingMediocre = mgCreateImage("loading_mediocre.png")
+	mgSetOrigo(loadingMediocre, "center")
+	mgSetPos(loadingMediocre, centerX, top+230)
+	mgSetScale(loadingMediocre, 0.11, 0.11)
+	
+	loadingBg = mgCreateImage("loading_bg.png")
+	mgSetOrigo(loadingBg, "center")
+	mgSetScale(loadingBg, 0.85, 0.85)
+	mgSetPos(loadingBg, centerX, top+230)
+
+	loadingBall = mgCreateImage("loading_ball.png")
+	mgSetOrigo(loadingBall, "center")
+	mgSetScale(loadingBall, 0.11, 0.11)
+	mgSetPos(loadingBall, centerX, top+230)
+
+	loadingDots = {}
+	for i=1,8 do
+		loadingDots[i] = mgCreateImage("loading_dot.png")
+		mgSetOrigo(loadingDots[i], "center")	
+		mgSetScale(loadingDots[i], 0.02, 0.02)
+		mgSetPos(loadingDots[i], centerX+(i-4.5)*6.25, top+250.75+0.7*math.sin(i/3))
+	end
+	
+	loadingFrame = 0
+	
+	panSnd = mgCreateSound("camera_pan.ogg")
+	loadingClick = mgCreateSound("loadingclick.ogg")
+	
+	rate = -1
+end
+
+
+function drawLoading()
+	local f = tonumber(mgGet("game.frame"))
+	local a = 1.0-(f-30)/60
+	if a < 0 then a = 0 end
+	if a > 1 then a = 1 end	
+
+	mgSetAlpha(loadingLogo, 1-a)
+	mgDraw(loadingLogo)
+
+	mgSetAlpha(loadingBg, a)
+	mgDraw(loadingBg)
+	mgSetAlpha(loadingBall, a)
+	mgDraw(loadingBall)
+	mgSetAlpha(loadingMediocre, a)
+	mgDraw(loadingMediocre)
+	for i=1, 8 do
+		if loadingFrame==20+i*10 then 
+			mgSetScale(loadingDots[i], 0.06+math.sin(i/3)/30, 0.06+math.sin(i/3)/30, "easeout", 0.15)
+			mgPlaySound(loadingClick, 0.5)
+		end
+		mgSetAlpha(loadingDots[i], a)
+		mgDraw(loadingDots[i])
+	end
+	if loadingFrame < 8 then
+		mgFullScreenColor(0,0,0,1.0-loadingFrame/8.0)
+	end
+	loadingFrame = loadingFrame + 1
+	if loadingFrame == 110 then
+		mgPlaySound(panSnd)
+		mgCommand("audio.playBackgroundMusic music/menu.ogg")
+	end
+end
+
+
+function load()
+	optionsButton = mgCreateUi("optionsbutton.xml")
+	mgSetOrigo(optionsButton, "bottomright")
+	mgSetPos(optionsButton, right-649, bottom-55)
+	
+	optionsUi = mgCreateUi("options.xml")
+	mgSetOrigo(optionsUi, "center")
+	mgSetPos(optionsUi, centerX, centerY)
+	mgSetScale(optionsUi, .5, .5)
+	mgSetAlpha(optionsUi, 0)
+
+	haloCircle = mgCreateImage("menu_halo.png")
+	mgSetOrigo(haloCircle, "center")
+	mgSetPos(haloCircle, centerX, centerY)
+	mgSetAlpha(haloCircle, 0)
+	
+	moreButton = mgCreateUi("morebutton.xml")
+	mgSetOrigo(moreButton, "bottomright")
+	mgSetPos(moreButton, right-347, bottom-55)
+	
+	scoreButton = mgCreateUi("scorebutton.xml")
+	mgSetOrigo(scoreButton, "bottomleft")
+	mgSetPos(scoreButton, left+55, bottom-55)
+	
+	moreUi = mgCreateUi("menu_more.xml")
+	mgSetOrigo(moreUi, "center")
+	mgSetPos(moreUi, centerX, centerY)
+	mgSetAlpha(moreUi, 0)
+	
+	gameOver = mgCreateUi("gameover.xml")
+	mgSetPos(gameOver, centerX, centerY)
+	mgSetScale(gameOver, 0, 0)
+	mgSetAlpha(gameOver, 0)
+
+	gameOverScore = mgCreateText("numbers_bold", true)
+	mgSetPos(gameOverScore, centerX-30, centerY+100)
+	
+	buttons = {}
+	for i=1,levelCount do
+		buttons[i] = mgCreateUi("button"..i..".xml")
+		mgSetOrigo(buttons[i], "center")
+	end
+	
+	scoreText = mgCreateText("smashhit")
+	mgSetScale(scoreText, 0.5, 0.5)
+
+	buttonText = mgCreateText("numbers_light", true)
+	mgSetColor(buttonText, 1, 1, 1)
+
+	dbgButton = mgCreateUi("debug.xml")
+	mgSetOrigo(dbgButton, "topleft")
+	mgSetPos(dbgButton, left+70, top+70)
+	
+	dbgMenu = mgCreateUi("debugmenu.xml")
+	mgSetOrigo(dbgMenu, "center")
+	mgSetPos(dbgMenu, (left+right)*0.5, (top+bottom)*0.5)
+	mgSetScale(dbgMenu, 0, 0)
+	
+	playMenuCanvas = mgCreateCanvas(2048, 1536)
+	mgSetOrigo(playMenuCanvas, "center")
+	mgSetPos(playMenuCanvas, centerX, centerY)
+	mgSetAlpha(playMenuCanvas, 0)
+	
+	playMenu = mgCreateUi("play_menu.xml")
+	mgSetOrigo(playMenu, "center")
+	mgSetPos(playMenu, centerX, centerY)
+	
+	playMenuText = mgCreateText("numbers_light", true)
+	mgSetColor(playMenuText, 0, 0, 0)
+
+	playMenuScore = mgCreateText("numbers_bold", true)
+	mgSetScale(playMenuScore, .8, .8)
+	mgSetPos(playMenuScore, centerX+30, centerY-45)
+	
+	playMenuStreak = mgCreateImage("hud/streak_balls.png")
+	mgSetScale(playMenuStreak, .8, .8)
+	mgSetPos(playMenuStreak, centerX-70, centerY-40)
+	
+	premiumImg = mgCreateImage("premium.png")
+	mgSetScale(premiumImg, 1, 1)
+	mgSetOrigo(premiumImg, "topright")
+	mgSetPos(premiumImg, right-110, top+80)
+	
+	waitImg = mgCreateImage("wait.png")
+	mgSetScale(waitImg, 2, 2)
+	mgSetOrigo(waitImg, "center")
+	mgSetPos(waitImg, centerX, centerY)
+	waitAngle = 0
+	
+	logo = mgCreateImage("logo.png")
+	mgSetOrigo(logo, "center")
+	mgSetPos(logo, centerX+4, top+203)
+
+	top_gradient = mgCreateImage("gradient_edges.png")
+	mgSetScale(top_gradient, 2, 5)
+	mgSetAlpha(top_gradient, 1)
+	mgSetOrigo(top_gradient, "topleft")
+	mgSetPos(top_gradient, left, top-100)
+
+	bottom_gradient = mgCreateImage("gradient_bottom.png")
+	mgSetScale(bottom_gradient, 2, 2.75)
+	mgSetOrigo(bottom_gradient, "bottomleft")
+	mgSetPos(bottom_gradient, left, bottom)
+	
+	button_pole = mgCreateImage("button_pole.png")
+	mgSetScale(button_pole, 1, 1)
+	mgSetOrigo(button_pole, "center")
+
+	currentHighscore = tonumber(mgGet("player.highscore"))
+	displayHighscore = currentHighscore
+	highscoreProgress = 0
+	highscoreSound = mgCreateSound("menu/counting.ogg")
+ 	
+	n = 0
+		
+	glowLine = mgCreateImage("menu_lineglow.png")
+	mgSetScale(glowLine, 4, 4)
+	mgSetOrigo(glowLine, "center")
+	mgSetPos(glowLine, centerX, centerY)
+	mgSetAlpha(glowLine, 0)
+	
+	optionsGfx = mgCreateImage("toggle_graphics.png")
+	mgSetPos(optionsGfx, centerX, centerY+15)
+	mgSetAlpha(optionsGfx, 0)
+	
+	upgradeButton = mgCreateUi("upgradebutton.xml")
+	mgSetOrigo(upgradeButton, "topright")
+	mgSetPos(upgradeButton, right-28, top+22)
+
+	upgradeCanvas = mgCreateCanvas(2048, 768)
+	mgSetAlpha(upgradeCanvas, 0)
+	mgSetOrigo(upgradeCanvas, "center")
+	mgSetPos(upgradeCanvas, centerX, centerY-50)
+	mgSetScale(upgradeCanvas, 1, 0)
+	
+	upgrade = mgCreateImage("upgrade.png")
+	upgradeBuy = mgCreateUi("upgrade_buy.xml")
+	mgSetOrigo(upgradeBuy, "center")
+	mgSetPos(upgradeBuy, centerX, 470)
+	upgradeRestore = mgCreateUi("upgrade_restore.xml")
+	mgSetOrigo(upgradeRestore, "center")
+	mgSetPos(upgradeRestore, centerX, 702)
+
+	upgradeCheckpoints = mgCreateImage("upgrade_checkpoints.png")
+	mgSetOrigo(upgradeCheckpoints, "center")
+	mgSetPos(upgradeCheckpoints, 340, 240)
+	upgradeCloud = mgCreateImage("upgrade_cloud.png")
+	mgSetOrigo(upgradeCloud, "center")
+	mgSetPos(upgradeCloud, 1690, 240)
+	upgradeStatistics = mgCreateImage("upgrade_statistics.png")
+	mgSetOrigo(upgradeStatistics, "center")
+	mgSetPos(upgradeStatistics, 1700, 650)
+	
+	premiumPrice = mgCreateText("smashhit")
+
+
+	highscoreText = mgCreateText("numbers", true)
+	mgSetScale(highscoreText, 0.5, 0.5)
+	mgSetPos(highscoreText, left+325, bottom-74)
+
+	ranks = mgCreateImage("ranks.png")
+	mgSetPos(ranks, left+360, bottom-153)
+
+	scoreInit()
+	
+	rankScore = {}
+	for i=1,15 do
+		rankScore[i] = (i-1)*1000
+	end
+	rankScore[12] = 10500
+	rankScore[13] = 11000
+	rankScore[14] = 11500
+	rankScore[15] = 12000
+	
+	gameOverShown = false
+	
+	displayHighscore = tonumber(mgGet("player.highscore"))
+	displayRank = getRank(displayHighscore)
+	targetRank = displayRank
+	rankFrame = 0
+	rankSound = mgCreateSound("score/rank.ogg")
+	
+	showSound = mgCreateSound("showmenu.ogg")
+	showCpSound = mgCreateSound("showcheckpoint.ogg")
+	hideSound = mgCreateSound("hidemenu.ogg")
+
+	statsHidden = mgCreateImage("statshidden.png")
+	mgSetOrigo(statsHidden, "pixel", 0, 2)
+	mgSetScale(statsHidden, 0.8, 0.8)
+	
+	statsBlank = mgCreateUi("statsblank.xml")
+	mgSetScale(statsBlank, 100, 1)
+	mgSetPos(statsBlank, 0, 420)
+	
+	help = mgCreateUi("help.xml")
+	mgSetOrigo(help, "center")
+	mgSetPos(help, centerX, centerY)
+	mgSetScale(help, 1, 0.6)
+	mgSetAlpha(help, 0)
+	
+	helpButton = mgCreateUi("helpbutton.xml")
+	mgSetOrigo(helpButton, "bottomright")
+	mgSetPos(helpButton, right-55, bottom-55)
+	
+	statsCounter = 0
+end
+
+
+function getRank(score)
+	for i=#rankScore, 1, -1 do
+		if score >= rankScore[i] then
+			return i
+		end
+	end
+	return 1
+end
+
+
+function scoreInit()
+	scCanvas = mgCreateCanvas(2048, 850)
+	mgSetOrigo(scCanvas, "center")
+	mgSetPos(scCanvas, centerX, centerY)
+	mgSetScale(scCanvas, 1, 0)
+	mgSetAlpha(scCanvas, 0)
+	scBackground = mgCreateImage("score/background.png")
+	scMode = "gc"
+	
+	scGcIn = mgCreateUi("score/gc_in.xml")
+	mgSetPos(scGcIn, 240, 170)
+
+	if platform=="android" then
+		mgSetPos(scGcIn, 120, 200)
+		scGcOut = mgCreateUi("score/gc_out.xml")
+		mgSetPos(scGcOut, 120, 200)
+	end
+	
+	scStats = mgCreateText("numbers", true)
+	mgSetScale(scStats, 0.6, 0.6)
+	
+	scRankFrame = 0
+	
+	scOpenSound = mgCreateSound("score_open.ogg")
+	scOpenClose = mgCreateSound("score_close.ogg")
+end
+
+
+function scoreFrame()
+end
+
+
+function scoreDraw()
+	local tmp, a = mgGetScale(scCanvas)
+	if a > 0 then
+		mgFullScreenColor(0, 0, 0, a*0.3)
+	else
+		return
+	end
+
+	mgPushCanvas(scCanvas)
+	mgDraw(scBackground)
+	
+	local signedIn = true
+	if platform=="android" then
+		signedIn = (mgGet("game.signedin") == "1")
+	end
+	if signedIn then
+		mgDraw(scGcIn)
+	else
+		if scGcOut then
+			mgDraw(scGcOut)
+		end
+	end
+	
+	statsCounter = statsCounter + 1
+	if statsCounter == 20 then mgPlaySound(highscoreSound) end
+	
+	local tr = (statsCounter-20) / 60
+	if tr > 0 then 
+		if tr > 1 then tr = 1 end
+
+		local premium = (mgGet("game.premium") == "1")
+	
+		local ballsHit = tonumber(mgGet("stats.ballshit"))
+		local balls = tonumber(mgGet("stats.balls"))
+		if balls == 0 then balls = 1 end
+		local hitRate = ballsHit / balls * 100
+	
+		local avgStreak = 0
+		local avgBalls = 0
+		if tonumber(mgGet("stats.rooms")) > 0 then
+			avgStreak = math.floor(tonumber(mgGet("stats.accstreak")) / tonumber(mgGet("stats.rooms")))
+			avgBalls = math.floor(tonumber(mgGet("stats.accballs")) / tonumber(mgGet("stats.rooms")))
+		end
+
+		stats = {}
+		stats[0] = mgGet("stats.distance")
+		stats[1] = mgGet("stats.streak")
+		stats[2] = mgGet("stats.peakballs")
+		stats[3] = hitRate
+		stats[4] = avgStreak
+		stats[5] = avgBalls
+		stats[6] = mgGet("stats.balls")
+		stats[7] = mgGet("stats.broken")
+	
+		for i=0,7 do
+			local x,y	
+			if i<4 then x = 620 else x = 1520 end
+			y = (i%4)*89+360
+			if premium then
+				mgSetPos(scStats, x, y) 
+				local txt = math.floor(tonumber(stats[i])*tr)
+				if i==3 then
+					txt = txt .. ">"
+				end
+				mgSetText(scStats, txt) 
+				mgDraw(scStats)
+			else
+				mgSetPos(statsHidden, x, y)
+				mgDraw(statsHidden)
+			end
+		end
+	
+		if not premium then
+			mgDraw(statsBlank)
+		end
+	end
+	mgPopCanvas()
+end
+
+function frame()
+	if mgGet("game.loaded")=="0" then
+		for i=1, 8 do
+			if loadingFrame==i*10 then 
+				mgCommand("game.load")
+			end
+		end
+		return
+	end
+	
+	if tonumber(mgGet("game.menutransition")) > 0.99 then
+		local highscore = tonumber(mgGet("player.highscore"))
+		if highscore > currentHighscore then
+			if highscoreProgress == 0 then
+				--Init highscore sequence
+				highscoreProgress = 0.01
+				mgPlaySound(highscoreSound)
+			elseif highscoreProgress > 1 then
+				--End highscore sequence
+				currentHighscore = highscore
+				displayHighscore = highscore
+				highscoreProgress = 0
+			else
+				--Highscore sequence
+				highscoreProgress = highscoreProgress + 0.02
+				displayHighscore = math.floor(currentHighscore + (highscore-currentHighscore)*highscoreProgress)
+			end
+		end
+		if highscore < currentHighscore then
+			currentHighscore = highscore
+			displayHighscore = highscore
+			highscoreProgress = 0
+		end
+	end
+	scoreFrame()
+
+	if displayHighScore == currentHighScore then
+		targetRank = getRank(currentHighscore)
+	end	
+
+	if displayRank ~= targetRank then
+		if rankFrame == 0 then
+			rankFrame = 1
+			mgSetAlpha(ranks, 1)
+			mgSetAlpha(ranks, 0, "easeout", 0.5)
+			--mgSetScale(ranks, 1, 1)
+			--mgSetScale(ranks, 0, 0, "easein", 0.5)
+		else
+			rankFrame = rankFrame + 1
+			if rankFrame == 30 then
+				mgPlaySound(rankSound)
+				displayRank = targetRank
+				mgSetAlpha(ranks, 0)
+				mgSetAlpha(ranks, 1, "easein", 0.5)
+				--mgSetScale(ranks, 2, 2)
+				--mgSetScale(ranks, 1, 1, "easeout", 0.5)
+				rankFrame = 0
+			end
+		end
+	end
+end
+
+
+function draw()
+	if mgGet("game.loaded")=="0" then
+		return
+	end
+
+	mgDraw(glowLine)
+	
+	mgDraw(gameOver)
+	mgSetScale(gameOverScore, mgGetScale(gameOver))
+	mgDraw(gameOverScore)
+	
+	
+	if glowT > 0 then
+		glowT = glowT-1
+	end
+	
+	scoreLineCheck = mgGetAlpha(glowLine)
+	if scoreLineCheck > 0 and glowT == 0 then
+		mgSetAlpha(glowLine, 0, "linear", .05)
+		mgSetScale(glowLine, 4, .1, "linear", .05)
+	end
+end
+
+function drawWorld()
+	if mgGet("game.loaded")=="0" then
+		drawLoading()
+		return
+	end
+
+	t = mgGet("game.menutransition")
+	t = (t-0.5)*2
+	if t < 0 then t = 0 end
+
+	mgSetZ(0)
+
+	mgFullScreenColor(0, .2, .25, t)
+
+	mgDrawMenuMesh()
+
+	mgSetAlpha(top_gradient, t)
+	mgDraw(top_gradient)
+	mgSetAlpha(bottom_gradient, t)
+	mgDraw(bottom_gradient)
+	
+	if mgGet("game.premium") ~= "1" then
+		mgSetAlpha(upgradeButton, t)
+		mgDraw(upgradeButton)
+	end
+	
+	mgSetAlpha(dbgButton, t*0.3)
+	mgSetAlpha(optionsButton, t)
+	if mgGet("game.deploy")=="0" then
+		mgDraw(dbgButton)
+	end
+	mgDraw(optionsButton)
+	mgDraw(moreButton)
+	mgDraw(scoreButton)
+	mgDraw(helpButton)
+
+	local scoreProgress = 1
+	if targetRank < #rankScore then
+		local scoreLow = rankScore[targetRank]
+		local scoreHigh = rankScore[targetRank+1]
+		scoreProgress = (displayHighscore-scoreLow)/(scoreHigh-scoreLow)
+		if scoreProgress > 1 then scoreProgress = 1 end
+	end
+
+	mgSetText(highscoreText, displayHighscore)
+	mgSetOrigo(highscoreText, "bottomright")
+	mgSetColor(highscoreText, .75, .9, .95)
+	mgDraw(highscoreText)
+
+	local y = 100*(displayRank-1)
+	mgSetCrop(ranks, 0, y, 500, y+100)
+	mgSetOrigo(ranks, "topleft")
+	mgDraw(ranks)
+
+	x,y = mgGetPos(levelCanvas)
+	mgSet("game.levelpos", x)
+
+	local wide = 4.0*(1.0-(bottom-top)/1536)
+	for i=1,levelCount do
+		x = (i-1)*680
+		dist = (i-1)*1000
+		score = mgGetHighScore(i-1)
+
+		bx,by = mgGetCheckpointPos(i-1)
+		bx = bx + 15
+		by = by - 50 - 75*wide
+		local buttonOffset = math.sin(mgScriptTime()*2+2*i)*5.0;
+		mgSetPos(buttons[i], bx, by + buttonOffset)
+
+		mgSetZ(7)
+		mgSetAlpha(buttons[i], t)
+		mgDraw(buttons[i])
+
+		mgSetPos(button_pole, bx, by+160)
+		mgSetAlpha(button_pole, t)
+		mgDraw(button_pole)
+		
+		mgSetText(buttonText, ""..i-1)
+		mgSetOrigo(buttonText, "center")
+		mgSetPos(buttonText, bx-20, by-35+buttonOffset)
+		mgSetScale(buttonText, 1, 1)
+		mgSetAlpha(buttonText, t)
+
+		if i > 1 and i < levelCount then
+			mgDraw(buttonText)
+		end
+
+		if mgGetHighScore(i) == 0 then
+			break
+		end
+	end
+	mgSetZ(0)
+
+	local f = tonumber(mgGet("game.frame"))
+	if f > 100 then
+		mgDraw(logo)
+	else
+		mgFullScreenColor(0, 0, 0, 1.0-(f-30)/30)
+		drawLoading()
+	end
+		
+	local a = mgGetAlpha(playMenuCanvas)
+	if a > 0 then
+		mgFullScreenColor(0,0,0,a*0.5)
+		mgPushCanvas(playMenuCanvas)
+		mgDraw(playMenu)
+		mgDraw(playMenuStreak)
+		mgDraw(playMenuScore)
+		if selectedLevel then
+			score = mgGetHighScore(selectedLevel)
+			local lvl = tonumber(selectedLevel)
+			if lvl < 10 then
+			mgSetText(playMenuText, lvl)
+			else
+				mgSetText(playMenuText, ";") -- Endless
+			end
+			mgSetOrigo(playMenuText, "center")
+			mgSetAlpha(playMenuText, 1)
+			mgSetPos(playMenuText, centerX + 215, centerY - 151)
+			mgSetScale(playMenuText, 0.68, 0.68)
+			mgDraw(playMenuText)		
+		end
+		mgPopCanvas()
+	end
+	
+	local optAlpha = mgGetAlpha(optionsUi)
+	if optAlpha > 0 then
+		mgFullScreenColor(0,0,0,optAlpha*0.5)
+		mgDraw(optionsUi)
+		mgSetScale(optionsGfx, mgGetScale(optionsUi))
+		mgSetAlpha(optionsGfx, mgGetAlpha(optionsUi))
+		local gfx = mgGet("game.graphics")
+		if gfx == "low" then
+			 mgSetCrop(optionsGfx, 0, 0, 512, 128)
+		elseif gfx == "medium" then 
+			mgSetCrop(optionsGfx, 0, 128, 512, 256)
+		elseif gfx == "high" then 
+			mgSetCrop(optionsGfx, 0, 256, 512, 384) 
+		end
+		mgSetOrigo(optionsGfx, "pixel", 256, -150)
+		mgDraw(optionsGfx)
+	end
+	
+	if rate ~= -1 then
+		local rateAlpha = mgGetAlpha(rate)
+		if rateAlpha > 0 then
+			mgFullScreenColor(0,0,0,rateAlpha*0.5)
+			mgDraw(rate)
+		end
+	end
+		
+	local moreAlpha = mgGetAlpha(moreUi)
+	if moreAlpha > 0 then
+		mgFullScreenColor(0,0,0,moreAlpha*0.5)
+		mgDraw(moreUi)
+	end
+	mgDraw(dbgMenu)
+	
+	mgDraw(help)
+	
+	local a = mgGetAlpha(upgradeCanvas)
+	if a > 0 then
+		mgFullScreenColor(0,0,0,a*0.5)
+		mgPushCanvas(upgradeCanvas)
+		mgDraw(upgrade)
+		local s = math.sin(mgScriptTime()*5)*0.02 + 1.0
+		mgSetScale(upgradeBuy, s, s)
+		mgDraw(upgradeBuy)
+		mgDraw(upgradeRestore)
+		mgDraw(upgradeCheckpoints)
+		mgDraw(upgradeCloud)
+		mgDraw(upgradeStatistics)
+		if mgIsVisible(upgrade) then
+			local price = mgGet("game.premiumprice")
+			if price ~= "" then
+				mgSetText(premiumPrice, price)
+				mgSetOrigo(premiumPrice, "center")
+				mgSetColor(premiumPrice, 0.9, 0.95, 1)
+				mgSetPos(premiumPrice, centerX-20, 490+30*s)
+				mgSetScale(premiumPrice, s*0.85, s*0.85)
+				mgDraw(premiumPrice)
+			end
+		end
+		mgPopCanvas()
+	end
+
+	mgDraw(haloCircle)
+		
+	mgSetZ(-1.3)
+	scoreDraw()
+	mgSetZ(0)
+	
+	if mgGet("game.purchasing") == "1" then
+		mgFullScreenColor(0,0,0,0.5)
+		waitAngle = waitAngle - 0.1
+		mgSetRot(waitImg, waitAngle)
+		mgDraw(waitImg)
+	end
+end
+
+
+function showGameOver()
+	mgSetScale(gameOver, 1, 1, "linear", 0.1) 
+	mgSetScale(gameOverScore, 1, 1, "linear", 0.1) 
+	mgSetAlpha(gameOver, 1, "easeout") 
+	mgSetCanvasEnabled(levelCanvas, false)
+end
+
+
+function distanceToCanvasPos(distance)
+	return -distance*1.06
+end
+
+
+function handleCommand(cmd)
+
+	if cmd == "showoptions" then
+		if (mgGet("audio.musicEnabled") == "1") then
+			mgRadioSelect(optionsUi, "m1") 
+		else
+			mgRadioSelect(optionsUi, "m0") 
+		end
+		if (mgGet("audio.soundEnabled") == "1") then
+			mgRadioSelect(optionsUi, "s1") 
+		else
+			mgRadioSelect(optionsUi, "s0") 
+		end	
+		mgSetUiModal(optionsUi, true)
+		mgSetCanvasEnabled(levelCanvas, false)
+		
+		mgSetAlpha(optionsUi, 0)
+		mgSetScale(optionsUi, 1.5, 1.2)
+		mgSetScale(optionsUi, 1, 1, "easeout", 0.15)
+		mgSetAlpha(optionsUi, 1, "easeout", 0.15)
+
+		mgSetScale(haloCircle, 1.5, 1.2)
+		mgSetScale(haloCircle, 1, 1, "easeout", 0.15)
+		mgSetAlpha(haloCircle, 0)
+		mgSetAlpha(haloCircle, 1, "easeout", 0.05)
+		mgRunDelayed('mgSetAlpha(haloCircle, 0, "easeout", 0.4)', 0.05)
+		mgPlaySound(showSound)
+		
+	end
+
+	if cmd == "hideoptions" then
+		mgSetUiModal(optionsUi, false)
+		mgSetCanvasEnabled(levelCanvas, true)
+		
+		mgSetScale(optionsUi, 0.2, 0.4, "easein", 0.15)
+		mgSetAlpha(optionsUi, 0, "easein", 0.15)
+
+		mgSetAlpha(haloCircle, 0)
+		mgSetAlpha(haloCircle, 0, "easein", 0.1)
+		mgSetScale(haloCircle, 0.2, 0.2, "easein", 0.15)
+		mgPlaySound(hideSound)
+	end
+
+
+	if cmd == "showmore" then
+		mgSetAlpha(moreUi, 0)
+		mgSetScale(moreUi, 1.5, 1.2)
+		mgSetScale(moreUi, 1, 1, "easeout", 0.15)
+		mgSetAlpha(moreUi, 1, "easeout", 0.15)
+		mgSetUiModal(moreUi, true)
+		mgSetCanvasEnabled(levelCanvas, false)
+		mgPlaySound(showSound)
+		mgSetScale(haloCircle, 1.5, 1.2)
+		mgSetScale(haloCircle, 1, 1, "easeout", 0.15)
+		mgSetAlpha(haloCircle, 0)
+		mgSetAlpha(haloCircle, 1, "easeout", 0.05)
+		mgRunDelayed('mgSetAlpha(haloCircle, 0, "easeout", 0.4)', 0.05)
+	end
+
+	if cmd == "hidemore" then
+		mgSetScale(moreUi, 0.2, 0.4, "easein", 0.15)
+		mgSetAlpha(moreUi, 0, "easein", 0.15)
+		mgSetUiModal(moreUi, false)
+		mgSetCanvasEnabled(levelCanvas, true)
+		mgPlaySound(hideSound)
+
+		mgSetAlpha(haloCircle, 0)
+		mgSetAlpha(haloCircle, 0, "easein", 0.1)
+		mgSetScale(haloCircle, 0.2, 0.2, "easein", 0.15)
+	end
+
+	if startsWith(cmd, "level") then
+		selectedLevel = getSecond(cmd)
+		if selectedLevel == "0" then
+			selectedLevel = nil
+			mgSetCanvasEnabled(levelCanvas, false)
+			mgSetPos(levelCanvas, 0, 0, "cosine", 0.5)
+			mgCommand("level.start 0")
+		else
+			local i = tonumber(selectedLevel)
+			local score, streak = mgGetHighScore(i);
+			mgSetText(playMenuScore, score)
+			mgSetOrigo(playMenuScore, "center")
+			local balls = math.floor(streak/10)+1
+			if balls > 5 then balls = 5 end
+			mgSetCrop(playMenuStreak, 210*(balls-1), 0, 210*balls, 210)
+			mgSetOrigo(playMenuStreak, "center")
+			local lx, ly = mgGetPos(buttons[i+1])
+			local cx, cy = mgGetPos(levelCanvas)
+			mgSetPos(playMenuCanvas, lx, ly+30)
+			mgSetPos(playMenuCanvas, centerX, centerY, "easeout", 0.25)
+			mgSetAlpha(playMenuCanvas, 0)
+			mgSetAlpha(playMenuCanvas, 1, "easeout", 0.15)
+			mgSetScale(playMenuCanvas, 0.3, 0.3)
+			mgSetScale(playMenuCanvas, 1, 1, "easeout", 0.25)
+			mgSetUiModal(playMenu, true)
+			mgSetCanvasEnabled(levelCanvas, false)
+			mgSetPos(levelCanvas, distanceToCanvasPos(1000*i), 0, "easeout", 0.25)
+
+			mgSetPos(haloCircle, lx, ly+30)
+			mgSetPos(haloCircle, centerX, centerY, "easeout", 0.25)
+			mgSetScale(haloCircle, 0.3, 0.3)
+			mgSetScale(haloCircle, 0.86, 0.86, "easeout", 0.25)
+			mgSetAlpha(haloCircle, 0)
+			mgSetAlpha(haloCircle, 1, "easeout", 0.15)
+			mgRunDelayed('mgSetAlpha(haloCircle, 0, "easeout", 0.6)', 0.15)
+			mgPlaySound(showCpSound)
+		end
+	end
+	
+	if cmd == "play" then
+		mgCommand("level.start "..selectedLevel)
+		mgSetScale(playMenuCanvas, 1.4, 1.4, "easein", 0.25)
+		mgSetAlpha(playMenuCanvas, 0, "easein", 0.25)
+		mgSetUiModal(playMenu, false)
+		selectedLevel = nil
+	end
+	
+	if cmd == "hideplaymenu" then
+		mgSetScale(playMenuCanvas, 0.4, 0.4, "easein", 0.15)
+		mgSetAlpha(playMenuCanvas, 0, "easein", 0.15)
+		mgSetUiModal(playMenu, false)
+		selectedLevel = nil
+		mgSetCanvasEnabled(levelCanvas, true)
+		mgPlaySound(hideSound)
+	end
+	
+	if cmd == "showdebug" then
+		mgSetScale(dbgMenu, 1, 1, "cosine", 0.1)
+		mgSetUiModal(dbgMenu, true)
+	end
+
+	if cmd == "hidedebug" then
+		mgSetScale(dbgMenu, 0, 0, "cosine", 0.1)
+		mgSetUiModal(dbgMenu, false)
+	end
+
+	if cmd == "gameover" then
+		gameOverShown = true
+		local score = tonumber(mgGet("level.score"))
+		if score > currentHighscore then
+			mgSetCrop(gameOver, 0, 750, 750, 1500)
+			if mgGet("player.rated") == "0" and score > 3000 and tonumber(mgGet("player.startcount")) >= 2 then
+				trigShowRate = true
+			end
+		else
+			mgSetCrop(gameOver, 0, 0, 750, 750)
+		end
+		mgSetOrigo(gameOver, "center")
+		mgSetText(gameOverScore, "=" .. mgGet("level.score"));
+		mgSetOrigo(gameOverScore, "center")
+		mgSetUiModal(gameOver, true)
+		mgRunDelayed("showGameOver()", 1.0)
+	end
+
+	if cmd == "hidegameover" then
+		gameOverShown = false
+		mgSetScale(gameOver, 0, 0, "easein", 0.15)
+		mgSetAlpha(gameOver, 0, "easein", 0.15)
+		mgSetUiModal(gameOver, false)
+		mgSetCanvasEnabled(levelCanvas, true)
+		if trigShowRate then handleCommand("showrate") trigShowRate=false end
+	end
+	
+	if cmd == "showscore" then
+		if mgGet("game.premium") == "1" and tonumber(mgGet("stats.distance")) > 0 then
+			statsCounter = 0
+		else
+			statsCounter = 1000
+		end
+		mgPlaySound(scOpenSound)
+		mgSetScale(scCanvas, 1, 1, "easeout", 0.15)
+		mgSetAlpha(scCanvas, 1, "easeout", 0.15)
+		mgSetUiModal(scGcIn, true)
+		if scGcOut then
+			mgSetUiModal(scGcOut, true)
+		end
+		mgSetUiModal(statsBlank, true)
+		mgSetCanvasEnabled(levelCanvas, false)
+		mgSetAlpha(glowLine, .5, "easeout", .1)
+		mgSetScale(glowLine, 8, 11, "easeout", .1)
+		glowT = 10
+	end
+
+	if cmd == "hidescore" then
+		mgPlaySound(scOpenClose)
+		mgSetScale(scCanvas, 1, 0, "easein", 0.15)
+		mgSetAlpha(scCanvas, 0, "easein", 0.15)
+		mgSetUiModal(scGcIn, false)
+		mgSetUiModal(statsBlank, false)
+		if scGcOut then
+			mgSetUiModal(scGcOut, false)
+		end
+		mgSetCanvasEnabled(levelCanvas, true)
+		mgSetAlpha(glowLine, 1)
+		mgSetAlpha(glowLine, 0, "linear", .3)
+		mgSetScale(glowLine, 8, 11)
+		mgSetScale(glowLine, 8, 0.1, "easeout", 0.2)
+		glowT = 15
+	end
+	
+	if startsWith(cmd, "scmode") then
+		scMode = getSecond(cmd)
+		print(scMode)
+	end
+	
+	if cmd == "activate" then
+		mgSetPos(levelCanvas, distanceToCanvasPos(tonumber(mgGet("level.distance"))), 0)
+		mgSetCanvasEnabled(levelCanvas, true)
+	end
+
+	if cmd == "showupgradedelayed" then
+		mgRunDelayed('handleCommand("showupgrade")', 1.1)
+		mgSetUiModal(upgradeBuy, true)
+	end
+	
+	if cmd == "showupgrade" then
+		mgPlaySound(showSound)
+		mgSetAlpha(upgradeCanvas, 0)
+		mgSetScale(upgradeCanvas, 1, 0.6)
+		mgSetAlpha(upgradeCanvas, 1, "easeout", 0.15)
+		mgSetScale(upgradeCanvas, 1, 1, "easeout", 0.15)
+		mgSetUiModal(upgradeBuy, true)
+		mgSetUiModal(upgradeRestore, true)
+		mgSetCanvasEnabled(levelCanvas, false)
+		mgSetScale(upgradeCheckpoints, 1.5, 1.5)
+		mgSetAlpha(upgradeCheckpoints, 0)
+		mgRunDelayed('mgSetScale(upgradeCheckpoints, 1, 1, "easeout", 0.25) mgSetAlpha(upgradeCheckpoints, 1, "easeout", 0.25)', 0.1)
+
+		mgSetScale(upgradeCloud, 1.5, 1.5)
+		mgSetAlpha(upgradeCloud, 0)
+		mgRunDelayed('mgSetScale(upgradeCloud, 1, 1, "easeout", 0.25) mgSetAlpha(upgradeCloud, 1, "easeout", 0.25)', 0.25)
+
+		mgSetScale(upgradeStatistics, 1.5, 1.5)
+		mgSetAlpha(upgradeStatistics, 0)
+		mgRunDelayed('mgSetScale(upgradeStatistics, 1, 1, "easeout", 0.25) mgSetAlpha(upgradeStatistics, 1, "easeout", 0.25)', 0.4)
+	end
+
+	if cmd == "hideupgrade" then
+		mgPlaySound(hideSound)
+		mgSetUiModal(upgradeBuy, false)
+		mgSetUiModal(upgradeRestore, false)
+		mgSetAlpha(upgradeCanvas, 0, "easein", 0.15)
+		mgSetScale(upgradeCanvas, 0.9, 0.7, "easein", 0.15)
+		mgSetCanvasEnabled(levelCanvas, true)
+	end
+	
+	if cmd == "facebook" then
+		if platform == "ios" then
+			mgCommand("game.url fb://profile/1447160805510492")
+		else
+			mgCommand("game.url http://www.facebook.com/smashhitgame")
+		end
+	end
+	
+	if cmd == "twitter" then
+		mgCommand("game.url http://www.twitter.com/smashhitgame")
+	end
+
+	if cmd == "rate" then
+		mgCommand("player.rate")
+		if platform == "android" then
+			mgCommand("game.url http://play.google.com/store/apps/details?id=com.mediocre.smashhit")
+		end
+		if platform == "ios" then
+			mgCommand("game.url itms-apps://itunes.apple.com/app/id603527166?at=10l6dK")
+		end
+	end	
+
+	if cmd == "moregames" then
+		if platform == "android" then
+			mgCommand("game.url http://www.smashhitgame.com/moregames_android")
+		else
+			mgCommand("game.url http://www.smashhitgame.com/moregames")
+		end
+	end	
+	
+	if cmd == "back" then
+		if mgGetAlpha(optionsUi) > 0 then
+			handleCommand("hideoptions")
+		elseif mgGetAlpha(moreUi) > 0 then
+			handleCommand("hidemore")
+		elseif mgGetAlpha(scCanvas) > 0 then
+			handleCommand("hidescore")
+		elseif mgGetAlpha(upgradeCanvas) > 0 then
+			handleCommand("hideupgrade")
+		elseif mgGetAlpha(gameOver) > 0 then
+			handleCommand("hidegameover")
+		elseif mgGetAlpha(playMenuCanvas) > 0 then
+			handleCommand("hideplaymenu")
+		elseif mgGetAlpha(help) > 0 then
+			handleCommand("hidehelp")
+		elseif rate ~= -1 and mgGetAlpha(rate) > 0 then
+			handleCommand("hiderate")
+		else
+			mgCommand("game.quit")
+		end
+	end
+	
+	if cmd == "showhelp" then
+		mgSetAlpha(help, 1, "easeout", 0.15)
+		mgSetScale(help, 1, 1, "easeout", 0.15)
+		mgSetUiModal(help, true)
+		mgSetCanvasEnabled(levelCanvas, false)
+		mgPlaySound(showSound)
+		mgSetAlpha(glowLine, .5, "easeout", .1)
+		mgSetScale(glowLine, 8, 11, "easeout", .1)
+		glowT = 10
+	end
+	
+	if cmd == "hidehelp" then
+		mgSetAlpha(help, 0, "easeout", 0.15)
+		mgSetScale(help, 1, 0.6, "easeout", 0.15)
+		mgSetUiModal(help, false)
+		mgSetCanvasEnabled(levelCanvas, true)
+		mgPlaySound(hideSound)
+		mgSetAlpha(glowLine, 1)
+		mgSetAlpha(glowLine, 0, "linear", .3)
+		mgSetScale(glowLine, 8, 11)
+		mgSetScale(glowLine, 8, 0.1, "easeout", 0.2)
+		glowT = 15
+	end
+	
+	if cmd == "showrate" then
+		mgCommand("player.rate")
+		rate = mgCreateUi("rate.xml")
+		mgSetOrigo(rate, "center")
+		mgSetPos(rate, centerX, centerY)
+		mgSetAlpha(rate, 0)
+		mgSetScale(rate, 1.5, 1.2)
+		mgSetScale(rate, 1, 1, "easeout", 0.15)
+		mgSetAlpha(rate, 1, "easeout", 0.15)
+
+		mgSetUiModal(rate, true)
+		mgSetCanvasEnabled(levelCanvas, false)
+
+		mgPlaySound(showSound)
+	end
+	
+	if cmd == "hiderate" then
+		mgSetUiModal(rate, false)
+		mgSetCanvasEnabled(levelCanvas, true)
+		
+		mgSetScale(rate, 0.2, 0.4, "easein", 0.15)
+		mgSetAlpha(rate, 0, "easein", 0.15)
+		mgPlaySound(hideSound)
+	end
+	
+	if cmd == "load" then
+		load()
+	end
+end
+
+

@@ -1,0 +1,25 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: Smash Hit 1.0.0.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- mp3
+- png
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '9'
+  targetSdkVersion: '14'
+sharedLibrary: false
+sparseResources: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.7.0
+versionInfo:
+  versionCode: '10000'
+  versionName: 1.0.0

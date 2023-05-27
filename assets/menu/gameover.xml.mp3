@@ -1,0 +1,3 @@
+<ui texture="gameover.png" coords="0 0 750 750">	
+	<outside cmd="script:hidegameover"/>
+</ui>
