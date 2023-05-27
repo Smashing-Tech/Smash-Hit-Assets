@@ -1,8 +1,6 @@
 <ui texture="options.png" selected="options_select.png">	
-	<rect id="m1" group="1" selected="true" coords="77 225 249 411" cmd="setproperty audio.musicEnabled=1 ; game.saveConfig ; audio.playBackgroundMusic snd/menu.ogg" />
-	<rect id="m0" group="1" coords="250 77 420 411" cmd="setproperty audio.musicEnabled=0 ; game.saveConfig" />
-	<rect id="s1" group="2" selected="true" coords="437 225 608 411" cmd="setproperty audio.soundEnabled=1 ; game.saveConfig" />
-	<rect id="s0" group="2" coords="609 225 780 411" cmd="setproperty audio.soundEnabled=0 ; game.saveConfig" />
-	<rect id="g0" coords="188 574 661 760" cmd="game.togglegraphics ; game.saveConfig" />
+	<rect coords="75 220 420 410" cmd="audio.togglemusic ; game.saveConfig" />
+	<rect coords="435 220 780 410" cmd="audio.togglesound ; game.saveConfig" />
+	<rect coords="188 574 661 760" cmd="game.togglegraphics ; game.saveConfig" />
 	<outside cmd="script:hideoptions"/>
 </ui>

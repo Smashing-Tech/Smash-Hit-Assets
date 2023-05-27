@@ -7,11 +7,14 @@ SHA1-Digest: rjvBPz9EDqYS/+iS1z58Sjjrbp0=
 Name: assets/segments/phosphor/part2/16_4.mesh.mp3
 SHA1-Digest: F0JU+wx6mkF67QUpdhQksc5Buc4=
 
+Name: assets/menu/localize_zh/gameover_continue.png.mtx.mp3
+SHA1-Digest: ldEQGviAnhSfghELiHEttfuPISk=
+
 Name: assets/segments/ocean/tunnel/16_0.mesh.mp3
 SHA1-Digest: LhARFT3WqLo+u5SuJ9EA1/7lC/8=
 
 Name: assets/menu/localize_ko/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: iHgh/0Q2IYPXWP18hrvhEy9nDTo=
+SHA1-Digest: wYL4A6vsAmEg+PA2kzRCNArmqb8=
 
 Name: assets/segments/night/part2/dna_dec2.mesh.mp3
 SHA1-Digest: pjPEi9efO6aTTRtqEnHG9fWy/8I=
@@ -26,7 +29,7 @@ Name: assets/snd/swoosh1.ogg.mp3
 SHA1-Digest: BQsWfew1z0wLGepWESWFvMLAZfE=
 
 Name: assets/menu/localize_it/gameover.png.mtx.mp3
-SHA1-Digest: 5dm2Yxwp2mG2ZpnHlHKDw5RbYAg=
+SHA1-Digest: WtBaS3xPmjT41bJuMU54Tzuw+hU=
 
 Name: assets/segments/endless/narrow/scores/16_scoretops_x6.xml.gz.mp3
 SHA1-Digest: 94ZIrA0mrWEesKl0bqvcrSWoaZ0=
@@ -107,13 +110,13 @@ Name: assets/segments/ocean/stairs/start.mesh.mp3
 SHA1-Digest: 3FkaSqWVSRdsfcJ/xIk/G0aKvTM=
 
 Name: assets/hud/localize_ja/hints.png.mtx.mp3
-SHA1-Digest: 0u2ks2+GqJHNln7mys5sVzMmKEc=
+SHA1-Digest: 42+MyYoaodiyfGisKxHg0/n4J28=
 
 Name: assets/hud/puhud_ballfrenzy.xml.mp3
 SHA1-Digest: Q2LV9QXjG2SO+au2TnRdaq62fDQ=
 
 Name: assets/segments/basic/darker/bs.xml.gz.mp3
-SHA1-Digest: Ek2LlVUeystfAOkrw7XbVTtDS5c=
+SHA1-Digest: Ssnl6pbfitKsJ++ZDv17tU9j9RE=
 
 Name: assets/segments/endless/open/powerups/8_ballfrenzy.xml.gz.mp3
 SHA1-Digest: JTOqU9GTDqLPUMfihkXywFmxOso=
@@ -164,7 +167,7 @@ Name: assets/gfx/menu_distance.png.mtx.mp3
 SHA1-Digest: 538b4k/N9vnFngoFmeRFUCRgjgo=
 
 Name: assets/rooms/endless/space0.lua.mp3
-SHA1-Digest: m6IgPO4P9pzuK68WGuJl1Wk7BwY=
+SHA1-Digest: XcpMheCJdpUpDCaOmG4z4DjoEfI=
 
 Name: assets/menu/score/localize_zh/gc_in.png.mtx.mp3
 SHA1-Digest: y53nsnQmntfeTQpHy9Rbs9DwAF8=
@@ -233,7 +236,7 @@ Name: assets/menu/localize_ru/help.png.mtx.mp3
 SHA1-Digest: 0WbYhH6XWyy9BR00AEHPdm7TBHk=
 
 Name: assets/hud/localize_zh/hints.png.mtx.mp3
-SHA1-Digest: pfpuzMBz41re3B18MZMQ4GTWWqQ=
+SHA1-Digest: RzDdXi//qFR9jBnu5IAAxJ9uzig=
 
 Name: assets/menu/localize_zh/upgrade_restore.png.mtx.mp3
 SHA1-Digest: PDsMuhgr3GPaWPJhrc8kZKJZSmg=
@@ -290,13 +293,13 @@ Name: assets/segments/credits/bowling.xml.gz.mp3
 SHA1-Digest: 6EqB+L9dobY316s7fUqHvbvX0Io=
 
 Name: assets/menu/localize_it/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: da+YzuDSZN3ynyTtkN1vyNEbQKI=
+SHA1-Digest: u0LlETBM6VIPEkTlknx7JXELrw4=
 
 Name: assets/segments/endless/narrow/scores/8_scoretops_x2.mesh.mp3
 SHA1-Digest: jXIlL6OAJtnEJji/Mdn1CuzqmN0=
 
 Name: assets/menu/localize_ko/options.png.mtx.mp3
-SHA1-Digest: yhXbS9wLKcKwd656agSX7qT6Jc8=
+SHA1-Digest: 2Um/t0wIxwbustGLlob2WdVF0P4=
 
 Name: assets/segments/endless/open/obstacles/8_rotor2.xml.gz.mp3
 SHA1-Digest: lQX5FM6ez5VgON6qzVpdMTpP23M=
@@ -347,13 +350,16 @@ Name: assets/segments/endless/space/powerups/16_1.xml.gz.mp3
 SHA1-Digest: PLOATB2MZbSV2A75n5b0sZfTe+Q=
 
 Name: assets/menu/localize_de/gameover.png.mtx.mp3
-SHA1-Digest: Os6mrkgywvM9DuC0uC9bWg8sxME=
+SHA1-Digest: dnDwlWA7JcHXHvfMj1vblTpqwaM=
 
 Name: assets/segments/holodeck/rapid_start.xml.gz.mp3
 SHA1-Digest: Lo8Yp/wMefiWtSgaCKO8n3WwXGs=
 
 Name: assets/segments/ocean/sky/8_0.mesh.mp3
 SHA1-Digest: C7Gekz3qY3LVm2V269DSP2GSumU=
+
+Name: assets/menu/localize_ja/gameover_restart.png.mtx.mp3
+SHA1-Digest: cRI8u8vDOuUptmzjx3n5O8gTyIc=
 
 Name: assets/music/11.ogg.mp3
 SHA1-Digest: nd5EtJ3Cb4Vi+JxRVurxc8U9Bc0=
@@ -434,7 +440,7 @@ Name: assets/segments/brownie/part3/door.xml.gz.mp3
 SHA1-Digest: 0Hnz93sdnX3+GHaWkQH2uybyq0E=
 
 Name: assets/menu/localize_fr/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: 4wt8hCi7iOT8P16bys9AWW/tKBc=
+SHA1-Digest: lHeh58fPuyr1OTjptTnSGXXoyFk=
 
 Name: assets/segments/cave2/narrow/door.xml.gz.mp3
 SHA1-Digest: /gPWs8fVxJOWA1z6G/DLQfF7y+g=
@@ -470,7 +476,7 @@ Name: assets/hud/localize_es/appstore.png.mtx.mp3
 SHA1-Digest: jRjzo4GweN6Jdtk8LNVJvWVeVHM=
 
 Name: assets/menu/localize_de/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: smBzt30MpNFw0RJ2wlwYCIn1Kk0=
+SHA1-Digest: a6O0gX47TbEN+LhA8ddKzVprOhk=
 
 Name: assets/segments/cave/corridor/16_2.mesh.mp3
 SHA1-Digest: 51KXGrmBw3+PWAs/EES/gfJbjf4=
@@ -485,7 +491,7 @@ Name: assets/levels/night.xml.mp3
 SHA1-Digest: k97hOy7J6szd7lWbqdz/OBBcVdc=
 
 Name: assets/hud/pausemenu.xml.mp3
-SHA1-Digest: uWB7vSl6Ssj8xcQjnokj0jzJVN4=
+SHA1-Digest: U6xEf0aap3z5QMC24QljIJUVd/Y=
 
 Name: assets/menu/localize_de/rate.png.mtx.mp3
 SHA1-Digest: yPbl7Ekrey0VyaiUqnYastvFK4Y=
@@ -632,6 +638,9 @@ SHA1-Digest: qH3TJDEiUdNMVfxontkEu+xMeVo=
 Name: assets/segments/phosphor/part4/16_1.mesh.mp3
 SHA1-Digest: iRCWO5ZYxK2Wnx2uBMR/T1SzlyU=
 
+Name: assets/segments/endless/narrow/start.mesh.mp3
+SHA1-Digest: IqGaybC29qdeDbEYk+smurwGoNU=
+
 Name: assets/segments/holodeck/rapid3.xml.gz.mp3
 SHA1-Digest: T9mvkSfd26AGSXTk1NfM9EDzzrk=
 
@@ -657,10 +666,10 @@ Name: assets/segments/endless/wide/fillers/16_0.xml.gz.mp3
 SHA1-Digest: HatS/u//xTbgIlC5TAnlMMIplxo=
 
 Name: assets/segments/basic/darker/2_bs_arch.mesh.mp3
-SHA1-Digest: hU+XATJMNbayycC7cj9rHhfwjVU=
+SHA1-Digest: l6ZTbLRZHkGk6EIgh73sULIbrsg=
 
 Name: assets/hud/localize_de/hints.png.mtx.mp3
-SHA1-Digest: nPOvKOF1gC/1XWKwKhU0wZKa+8E=
+SHA1-Digest: 1AjbH85kpSWVD7KTsnvTWyP4Ryg=
 
 Name: assets/segments/night/part3/suspendcubes_3.xml.gz.mp3
 SHA1-Digest: nbfIzPIa5AKljD9PKkmT/13NvoI=
@@ -684,13 +693,16 @@ Name: assets/hud/localize_fr/checkpoint_saved.png.mtx.mp3
 SHA1-Digest: O6XPzjb6QPKkZ1BgDkn8VoyBeFw=
 
 Name: assets/menu/localize_de/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: 6Ed7ec0Jp5myQmWcsourD/mJJnE=
+SHA1-Digest: wpyTx53BDAsTca2Pe5N557LqdWI=
 
 Name: assets/segments/endless/wide/fillers/8_2.mesh.mp3
 SHA1-Digest: 8iWL9a0TM2crx3TeaAiddxP1LCs=
 
 Name: assets/segments/endless/narrow/fillers/16_0.xml.gz.mp3
 SHA1-Digest: z/hobvbhyM0mht90238AEGoNyV0=
+
+Name: assets/segments/endless/narrow/start.xml.gz.mp3
+SHA1-Digest: o9O8y2ATe6jAGrjjB6vyuoI22Xo=
 
 Name: assets/segments/night/part2/crank2.mesh.mp3
 SHA1-Digest: ewjVYoCW+5CTsB8x72PHFtQoovs=
@@ -738,7 +750,7 @@ Name: assets/hud/appstore_granny.xml.mp3
 SHA1-Digest: f2cmK2vlqDMTipf5TNRScnsd9kE=
 
 Name: assets/menu/localize_ru/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: aJkQrhfO4veK++VMQ/yOqcaaaUU=
+SHA1-Digest: /jZV0O+1WieZyi+evB4/gQ7MPkE=
 
 Name: assets/segments/menu/9.mesh.mp3
 SHA1-Digest: neo0mTcrY0IaD+alEKFFolqF1QY=
@@ -746,11 +758,11 @@ SHA1-Digest: neo0mTcrY0IaD+alEKFFolqF1QY=
 Name: assets/segments/cave/hall/start.xml.gz.mp3
 SHA1-Digest: P6yx54pp/IBKaI669bv0j/ai+VU=
 
-Name: res/drawable-mdpi/common_signin_btn_icon_focus_light.9.png
-SHA1-Digest: KUWcrP9v7FORu4ojRjzVSn0JZio=
-
 Name: res/drawable-mdpi/common_signin_btn_text_pressed_dark.9.png
 SHA1-Digest: MQsj73rqoxGdFvNYEPkKJZPqXBU=
+
+Name: res/drawable-mdpi/common_signin_btn_icon_focus_light.9.png
+SHA1-Digest: KUWcrP9v7FORu4ojRjzVSn0JZio=
 
 Name: assets/snd/laser/loop.ogg.mp3
 SHA1-Digest: TSjZBpwoEl2Zl+j6cNaTTLpEC3o=
@@ -801,13 +813,13 @@ Name: assets/hud/localize_ko/endless_mode.png.mtx.mp3
 SHA1-Digest: dH/elngU9tMZaBKyTOHw2emHxPc=
 
 Name: assets/hud/upgrade.png.mtx.mp3
-SHA1-Digest: vlo7ed176JOj1psXODs19Uzlmrk=
+SHA1-Digest: is8QvfSNbz/08BUcZIOYbU/F3b4=
 
 Name: assets/segments/phosphor/part3/16_2.mesh.mp3
 SHA1-Digest: HCRl4YezgCY9YitKDBklgbgR86w=
 
 Name: assets/menu/localize_ru/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: XcLKVeFl450YdMXcJcSphg7LDGQ=
+SHA1-Digest: 24DhDmtiCfvZFtimfUMiEf/3XpY=
 
 Name: assets/segments/endless/narrow/obstacles/8_beatmill.mesh.mp3
 SHA1-Digest: E7mTJrOrMdYO4W5wjqe0FJcKOuQ=
@@ -834,7 +846,7 @@ Name: assets/obstacles/rotor.lua.mp3
 SHA1-Digest: zGogKucVYi5LVQUR5jIDRtuixzg=
 
 Name: assets/menu/localize_it/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: cwqIctNHNgHlG/doCEd19XO9IXU=
+SHA1-Digest: EmqIFGCx5IAEqR9pXE36IkyhtdU=
 
 Name: assets/segments/night/part2/dna_st2.xml.gz.mp3
 SHA1-Digest: bHpJcNAOY2ArD6JbiiRyMQM0ejI=
@@ -844,6 +856,9 @@ SHA1-Digest: 8EoUNgunnTgtaaTrLlxfz29J2ls=
 
 Name: assets/snd/cleared5.ogg.mp3
 SHA1-Digest: ggReLeh+P22HNmLkUd2YP3AWyYw=
+
+Name: assets/menu/gameover_restart.png.mtx.mp3
+SHA1-Digest: iQSn1XftsxJUAlEvnbJLk3nOOFw=
 
 Name: assets/shaders/room.glsl.mp3
 SHA1-Digest: HaNtZhZAwjy7KeBL+g4gwrFT7zw=
@@ -921,7 +936,7 @@ Name: assets/segments/ocean/sky/start.mesh.mp3
 SHA1-Digest: 38LRhw3cLX1dEvfAqh3LwfAOTfs=
 
 Name: assets/rooms/endless/open0.lua.mp3
-SHA1-Digest: TyKvoSYCmUVgLanH6l4RjTvt7kE=
+SHA1-Digest: LqJiecWDaDFOVNhBsaGgTrXGd/k=
 
 Name: assets/menu/help.png.mtx.mp3
 SHA1-Digest: 3Al/cPDOzWX53MfdLN6IHXJjRbg=
@@ -978,13 +993,19 @@ Name: assets/menu/gradient_edges.png.mtx.mp3
 SHA1-Digest: zvVbN3COcsgMeg7cmcEyUC7rAm0=
 
 Name: assets/menu/localize_ru/helpbutton.png.mtx.mp3
-SHA1-Digest: iwLoU13TGL0x8hLh2WUG72oyEEk=
+SHA1-Digest: 1vXHCY2r98Z0PBZip81KQhyjAEY=
+
+Name: assets/segments/endless/open/start.mesh.mp3
+SHA1-Digest: ctXy2UVrf1vUreAQIlliDYT2ZMo=
 
 Name: assets/menu/localize_ko/helpbutton.png.mtx.mp3
 SHA1-Digest: LP647zYbmOsF3sV3g/gq1rbB75M=
 
 Name: assets/snd/breakable/glass_pane3.ogg.mp3
 SHA1-Digest: z9hgx6r4LTPi5fbGh145A/ITR7Y=
+
+Name: assets/menu/localize_de/gameover_restart.png.mtx.mp3
+SHA1-Digest: Iq1N5TVwJKSLoa+o50seQaXxZb4=
 
 Name: assets/obstacles/sweeper.lua.mp3
 SHA1-Digest: 22rG3GtcG0C5DoMRqL9kvUjzGA8=
@@ -1050,7 +1071,7 @@ Name: assets/segments/ocean/stairs/8_0.xml.gz.mp3
 SHA1-Digest: w0jmc2krmznULoUZaXPdctkgWas=
 
 Name: assets/hud/localize_es/hints.png.mtx.mp3
-SHA1-Digest: AtqkLQ2IHoTPGX7X33gkplLWq2k=
+SHA1-Digest: 4MzMNngViL6FipeD6KiTcbbtUUc=
 
 Name: assets/snd/breakable/glass_s2.ogg.mp3
 SHA1-Digest: YA39nmav9IGXT745ulRhl0D2L5g=
@@ -1082,6 +1103,9 @@ SHA1-Digest: 4YlKo6Wkn8oA1xLMVqRIORwbcuc=
 Name: assets/menu/localize_zh/menu_more_select.png.mtx.mp3
 SHA1-Digest: OoIKzMVv1j8vpaeHSMM4RbEbF40=
 
+Name: assets/menu/gameover_continue.xml.mp3
+SHA1-Digest: 8tRcEuquY2MuyipV70w7Vd1bjWA=
+
 Name: assets/segments/cave2/top/16_1.xml.gz.mp3
 SHA1-Digest: wUcn0hYVbmwtqLOBiBiWBLaJUlw=
 
@@ -1095,7 +1119,7 @@ Name: assets/gfx/localize_ko/bestdistance.png.mtx.mp3
 SHA1-Digest: wno+tv+MTAm7qBYUlgioExa4Sdg=
 
 Name: assets/menu/localize_zh/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: xoIdnnKCG5gW8h8l+mgoM60vqAM=
+SHA1-Digest: FeAc7Zl9TlScuYRie2yq8jAo/Q8=
 
 Name: assets/gfx/localize_it/credits.png.mtx.mp3
 SHA1-Digest: tGtmUosh6AXGF4Nknp2s9dnO670=
@@ -1124,11 +1148,17 @@ SHA1-Digest: bkZuJ0lBn77JijtZwB/sWWdHc+A=
 Name: assets/segments/endless/open/obstacles/8_rotor.mesh.mp3
 SHA1-Digest: pDJg0erAW2GRdvAbOuItVT4gYjY=
 
+Name: assets/hud/pucorner.png.mtx.mp3
+SHA1-Digest: VsnLm9SRg1GK13K4rO/44S16Bws=
+
 Name: assets/segments/ocean/towers/start.mesh.mp3
 SHA1-Digest: xFi2fGJlv5iw8aRAqBXM+WKfvCo=
 
 Name: assets/shaders/blurh.glsl.mp3
 SHA1-Digest: brTWQFBSdR2IFP9OirndOOa4OJ0=
+
+Name: assets/segments/endless/wide/start.mesh.mp3
+SHA1-Digest: /OVAURgrUAoV1l0qwJmwnPufMOY=
 
 Name: assets/snd/ball/ricochet1.ogg.mp3
 SHA1-Digest: CaPS0pCphf+tdXCVX/OutAphOOc=
@@ -1157,8 +1187,11 @@ SHA1-Digest: VLuhHLjDhPlWawdocHsAVkawvgs=
 Name: assets/segments/holodeck/rapid0.mesh.mp3
 SHA1-Digest: ilmHcZr4rZFn4PXDQiu6XWDHQKY=
 
+Name: assets/menu/localize_ru/gameover_continue.png.mtx.mp3
+SHA1-Digest: 7UK35acMqVjaah4IYjf3PN2uplI=
+
 Name: assets/menu/localize_es/options.png.mtx.mp3
-SHA1-Digest: 3M8Gv+O0PGtU/ZYfki/obKqnNek=
+SHA1-Digest: n3sJm37LOdJGYmpsnZmhmIGpHm8=
 
 Name: assets/segments/endless/narrow/powerups/8_slomo2.xml.gz.mp3
 SHA1-Digest: FnNPKg7TRUyUsr0gbCh0tvrH/Nk=
@@ -1205,6 +1238,9 @@ SHA1-Digest: gjn8+RMGLudqo/pdp3Xwa3KhAwk=
 Name: assets/menu/score/localize_it/background.png.mtx.mp3
 SHA1-Digest: CDGC/HXruyA/liclOiqiB5Bupyc=
 
+Name: assets/menu/localize_es/gameover_restart.png.mtx.mp3
+SHA1-Digest: utd8fJJ5ZFbsO84dATvad7bJTBs=
+
 Name: assets/segments/night/part2/start.xml.gz.mp3
 SHA1-Digest: lAfrii4sKtsSlFoCwS1H/uv5d5U=
 
@@ -1240,7 +1276,7 @@ Name: assets/menu/localize_it/start.png.mtx.mp3
 SHA1-Digest: MS1GycQ5IyljwekaMhh4+nJbmeY=
 
 Name: assets/menu/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: ggXLhTGHM8R+x04LfGEyyYyfn2k=
+SHA1-Digest: joSXfAc+wAlF+f9AzvMALszpifs=
 
 Name: assets/segments/endless/narrow/scores/16_scoretops_x6_2.xml.gz.m
  p3
@@ -1256,7 +1292,7 @@ Name: assets/menu/toggle_graphics.png.mtx.mp3
 SHA1-Digest: Wvwt9rSDuL1of49wuHCw/ZCBXJM=
 
 Name: assets/rooms/endless/wide0.lua.mp3
-SHA1-Digest: vRdQNgJNmwLHQrY/wZvIKajk5Nc=
+SHA1-Digest: HKzwVFfPQiC7FrsmLJFy0LHxaTw=
 
 Name: assets/segments/cave/narrow/8_0.mesh.mp3
 SHA1-Digest: LQqjBG2AhoP3G/cpiWXLkn4Y8/w=
@@ -1338,13 +1374,13 @@ Name: assets/segments/holodeck/bs.xml.gz.mp3
 SHA1-Digest: GD31mwjrxKi/BIzTeQvWTs1cj0g=
 
 Name: assets/menu/gameover.png.mtx.mp3
-SHA1-Digest: TzRvUYYbj/ylcCUqG40YFB+EZbI=
+SHA1-Digest: JE6b4pCdY8u1PY1nsmPIdjU9j7A=
 
 Name: assets/hud/localize_fr/resume.png.mtx.mp3
 SHA1-Digest: guI/IMLW7RAW12+aFENjT77rBiI=
 
 Name: assets/menu/localize_de/options.png.mtx.mp3
-SHA1-Digest: kvS2oJiQCy4C7GoCxShejMMNrSo=
+SHA1-Digest: En8VT98lnJqys1qi9yPndNkiBJU=
 
 Name: assets/levels/brownie.xml.mp3
 SHA1-Digest: eML5ZsL259Eo7xOxqrWVyuzuATs=
@@ -1481,12 +1517,12 @@ SHA1-Digest: f76na63pWhjCeRUWQmr2HOw6VtU=
 Name: assets/segments/endless/narrow/fillers/8_2.xml.gz.mp3
 SHA1-Digest: 9osfunW3hHpCO4mWQWfg97F4yAw=
 
-Name: assets/segments/basic/darker/powerup.mesh.mp3
-SHA1-Digest: McVw1kJkpe+c9Jl1az+3sebsNOU=
-
 Name: res/drawable-mdpi/common_signin_btn_text_disabled_focus_light.9.
  png
 SHA1-Digest: 29jlpwaYo8yADFvg53lRNdVbvt0=
+
+Name: assets/segments/basic/darker/powerup.mesh.mp3
+SHA1-Digest: McVw1kJkpe+c9Jl1az+3sebsNOU=
 
 Name: assets/hud/localize_de/checkpoint_saved.png.mtx.mp3
 SHA1-Digest: PQJkUUxyxLhfk3WzuEb+A7kY8ek=
@@ -1513,7 +1549,7 @@ Name: assets/segments/river/tunnel/start.xml.gz.mp3
 SHA1-Digest: ADlbkcKRgO4c7jZkD+i4R+5Wxr8=
 
 Name: AndroidManifest.xml
-SHA1-Digest: S7Q7fEWgQZuhJp23UW0oMdCgG9Y=
+SHA1-Digest: IV3TT4FTKI5Ty7zaaopGNinZtdw=
 
 Name: assets/segments/credits/start.mesh.mp3
 SHA1-Digest: LOQUoQ6bzoYR+WCwBn2MR+V5W6w=
@@ -1600,7 +1636,7 @@ Name: assets/snd/ball/wall2.ogg.mp3
 SHA1-Digest: C3F64d8r5gWZuLJEYoCzI0Eipdc=
 
 Name: assets/menu/localize_ja/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: xj0fjenhTDEuVjnZwgEmE09hSqA=
+SHA1-Digest: 93UYEF29T3x6rrwvExv5lxdAqJY=
 
 Name: assets/segments/night/part3/elgrid_line_st.mesh.mp3
 SHA1-Digest: fE9F6gslUmxtvqk7rU1PipIe3Do=
@@ -1651,7 +1687,7 @@ Name: assets/segments/menu/endless.mesh.mp3
 SHA1-Digest: ukGweIsF3cmZzxvf6x/QhkVDeVk=
 
 Name: assets/menu/localize_ja/gameover.png.mtx.mp3
-SHA1-Digest: lXhHRAVc8p1SiS159mTFGuTi8jo=
+SHA1-Digest: IELsRli+oHRcAx4j2p/lA6iuPbw=
 
 Name: assets/segments/endless/narrow/obstacles/16_flycubes_x2.mesh.mp3
 SHA1-Digest: 50Fy8eth+jVqOFuiTN3N+/SILD0=
@@ -1674,6 +1710,9 @@ SHA1-Digest: w+BdJtCNnqjAXjM+UYHm4JeY2Jg=
 
 Name: assets/obstacles/suspendcube.lua.mp3
 SHA1-Digest: P+Fw9cQLFsvSBzq2cDv4mDlOvIY=
+
+Name: assets/menu/localize_it/gameover_continue.png.mtx.mp3
+SHA1-Digest: rUhh7p5UJktrhFH99ZyMO9ZLG88=
 
 Name: assets/segments/basic/basic/door.mesh.mp3
 SHA1-Digest: XtGOr752X1bdzc5dnuVpS52biqY=
@@ -1748,11 +1787,11 @@ SHA1-Digest: nKkwo8OykKx5GKHw1+v+C6Z/bF8=
 Name: assets/segments/river/path/bounce.mesh.mp3
 SHA1-Digest: pOp0iGlO896lcUdI9f4yzJv61c4=
 
-Name: assets/segments/canyon/cave/door.mesh.mp3
-SHA1-Digest: Mxib1XyqZVA+PSRp8hMEQzbS2AU=
-
 Name: res/drawable-mdpi/common_signin_btn_text_disabled_light.9.png
 SHA1-Digest: vgTn+pEQhSLa5buaCqjDd3w3UWU=
+
+Name: assets/segments/canyon/cave/door.mesh.mp3
+SHA1-Digest: Mxib1XyqZVA+PSRp8hMEQzbS2AU=
 
 Name: assets/meshes/triangle.xml.mp3
 SHA1-Digest: dbCwmfYcAsAVcz6zj8zfgZ8jUIw=
@@ -1800,7 +1839,7 @@ Name: assets/segments/menu/4.xml.gz.mp3
 SHA1-Digest: sZOIt6VDDxIwRHsb+SteYlDm008=
 
 Name: assets/segments/basic/darker/chasms.xml.gz.mp3
-SHA1-Digest: MXVYvWxPbsyA17mRd6/l16KyNP4=
+SHA1-Digest: THrhBiiMgveG70H/Mz9LLWBV0E0=
 
 Name: assets/snd/object/metal0.ogg.mp3
 SHA1-Digest: MJ4nbxpFVe/SQd+9W4vHn4/x2Co=
@@ -1826,11 +1865,11 @@ SHA1-Digest: mDXQ2X7eLGGIaDXNO+I94M+JXrc=
 Name: assets/hud/puhud_balls.xml.mp3
 SHA1-Digest: U1EZpXmODf/PqBbl0F2t/Vg+vkE=
 
-Name: assets/segments/cave/hall/8_0.mesh.mp3
-SHA1-Digest: TSyefZGy7IfIBhekXoaDHDYlZ1U=
-
 Name: assets/hud/localize_it/hint_swipe.png.mtx.mp3
 SHA1-Digest: DoFGWGClmlNsW7SPQH4EByOny8w=
+
+Name: assets/segments/cave/hall/8_0.mesh.mp3
+SHA1-Digest: TSyefZGy7IfIBhekXoaDHDYlZ1U=
 
 Name: assets/obstacles/doors/45.lua.mp3
 SHA1-Digest: cp1ijtG068RvQC9uGXGpcTcXQdo=
@@ -1968,7 +2007,7 @@ Name: assets/menu/localize_ru/morebutton.png.mtx.mp3
 SHA1-Digest: flmp2f0goe1/yArVZBvrHHhIQB0=
 
 Name: assets/menu/options.png.mtx.mp3
-SHA1-Digest: KBZpaMIyh/c7SrjG1SK4tXaMU3A=
+SHA1-Digest: thcZ8QhQVyfNtqfuRiBhBAl4zSI=
 
 Name: assets/segments/menu/7.xml.gz.mp3
 SHA1-Digest: A0skV+w9JMbylyK6qxea+S9DVCA=
@@ -2040,7 +2079,7 @@ Name: assets/snd/laser-hit.ogg.mp3
 SHA1-Digest: ab7sia8OWcXwkvrqqiQ2rcgirAc=
 
 Name: assets/menu/localize_it/options.png.mtx.mp3
-SHA1-Digest: 1Q6HJVcz4YUMJ/mDM99iXdZrbks=
+SHA1-Digest: P0NSrC6EvAs8fHiweobwh+4CRe0=
 
 Name: assets/segments/river/tunnel/hammer.xml.gz.mp3
 SHA1-Digest: C9YxpeUxFFVyKMyn9N2dYkw9gyo=
@@ -2096,6 +2135,9 @@ SHA1-Digest: HWqkhg2LuE+Kr9UlA3bqXzQJ8A4=
 Name: assets/segments/endless/narrow/obstacles/8_beatmill.xml.gz.mp3
 SHA1-Digest: Wfk4A2L8i8UeE8IWaI0kKtwx1HI=
 
+Name: assets/menu/localize_fr/gameover_continue.png.mtx.mp3
+SHA1-Digest: tst9FPFqbi4gfl64ZY2ynZ3zElc=
+
 Name: res/drawable/common_signin_btn_icon_light.xml
 SHA1-Digest: OJXPXV0IBjRZCIij8GQ2hGfxnyc=
 
@@ -2109,7 +2151,7 @@ Name: assets/segments/holodeck/bonus_start.mesh.mp3
 SHA1-Digest: qLCZxDplJEmzAQGjTT/ZjDSvhys=
 
 Name: assets/menu/localize_de/helpbutton.png.mtx.mp3
-SHA1-Digest: /TTskDiSEiGTFaoLbc45Bjq09ls=
+SHA1-Digest: Oy5Dt0DeA+3h2G0V8U0zvaxfS4c=
 
 Name: assets/segments/cave2/narrow/16_1.mesh.mp3
 SHA1-Digest: ANv56eSK9xejfIY3zaXZBK/3LDw=
@@ -2181,7 +2223,7 @@ Name: assets/snd/clickup0.ogg.mp3
 SHA1-Digest: 7BB6Dk+6J1eSb/ZXIbzSoume4BA=
 
 Name: assets/menu/upgrade.png.mtx.mp3
-SHA1-Digest: KUUOwWu2aiLCix8Uj4botRscYSo=
+SHA1-Digest: cQUndqHjaWBEdkoSqNpLurFUinE=
 
 Name: assets/music/30.ogg.mp3
 SHA1-Digest: qrZfzzbIXtBZHKKbiGr24FgJZWY=
@@ -2218,6 +2260,9 @@ SHA1-Digest: 7gB/KHg5EiTVwwzcBPh/8lIqCmo=
 
 Name: assets/segments/holodeck/calm0.mesh.mp3
 SHA1-Digest: SOpe7bRpAybmlIPGHK0zl7j+Ff8=
+
+Name: assets/menu/gameover_restart_select.png.mtx.mp3
+SHA1-Digest: 8eF7Td73bAkQ8sRs28wH9nUUBUM=
 
 Name: assets/menu/localize_es/rate.png.mtx.mp3
 SHA1-Digest: KTNvavFdQHa9YRlsUBJXJA9ycRg=
@@ -2262,7 +2307,7 @@ Name: assets/hud/hint_swipe.png.mtx.mp3
 SHA1-Digest: /eb4sPEMP0Or9nhliGDR4RZ+4Xs=
 
 Name: assets/hud/localize_fr/hints.png.mtx.mp3
-SHA1-Digest: Iw4f4RuVdP6ul+lWyjsM+VL8xXI=
+SHA1-Digest: +TdHjGO1VVkEV/rI7cJHfplltps=
 
 Name: assets/segments/night/part3/suspendcubes_3.mesh.mp3
 SHA1-Digest: 1zrbPs2CM8bjhg6pvT2C2pHEfuU=
@@ -2284,6 +2329,9 @@ SHA1-Digest: Y7x73TO+UcTqyTkQX4NLbLskfOM=
 
 Name: assets/menu/localize_it/morebutton.png.mtx.mp3
 SHA1-Digest: l07KOIZD495J3NBWycz8WYDP2Y8=
+
+Name: assets/menu/localize_ko/gameover_continue.png.mtx.mp3
+SHA1-Digest: J3IgLSJDTttfnfx8GLKXSMHlpKI=
 
 Name: assets/shaders/basicglass.glsl.mp3
 SHA1-Digest: yzmAqOFCDrrRpoLQywkl7hLbwbY=
@@ -2315,6 +2363,9 @@ SHA1-Digest: GEcRE/ZTBrGpTaPTf22x6HF1uXw=
 Name: assets/obstacles/beatmill.lua.mp3
 SHA1-Digest: z8Hgyl7oSSuaLzLy8hmIUqpN0jc=
 
+Name: assets/segments/endless/space/start.xml.gz.mp3
+SHA1-Digest: jAep8JFMz+U98FRPXNZ9+nHaf5o=
+
 Name: assets/menu/showmenu.ogg.mp3
 SHA1-Digest: x5j8DYbmRKMu1+Tcts3zdVZj9+o=
 
@@ -2328,13 +2379,13 @@ Name: assets/segments/canyon/columns/16_2.xml.gz.mp3
 SHA1-Digest: SHzVW6ZbwLkmi6SUCdkbSyDdWoI=
 
 Name: assets/hud/localize_ru/hints.png.mtx.mp3
-SHA1-Digest: xNTC6FbhHhppaIl1JXndjtOPILE=
+SHA1-Digest: ClA+qHiLlRvMe+ZYRfe5ssOm4AI=
 
 Name: assets/segments/cave2/bottom/door.mesh.mp3
 SHA1-Digest: Uq0eJFoQuPpz1uf3HUhMAg5BZcA=
 
 Name: assets/hud/main.lua.mp3
-SHA1-Digest: iGBVV5iTxOIj24Yr7DZxxLW2Uuk=
+SHA1-Digest: mj0Mmzj4l2om+zP9aGfp2q2/SeI=
 
 Name: res/drawable-mdpi/common_signin_btn_icon_normal_dark.9.png
 SHA1-Digest: 5yTFZLZtCPpeiVFtQvpG2K4xDdE=
@@ -2343,7 +2394,7 @@ Name: assets/segments/endless/open/fillers/8_2.xml.gz.mp3
 SHA1-Digest: l7jGBBnHfRXw5gWchcE7J/Rkvwc=
 
 Name: assets/menu/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: RNKfBo4ziWa9S9GcbPToRbfzfu0=
+SHA1-Digest: SAyJGepnb8MR+GzXNny/MJaNmhI=
 
 Name: assets/segments/moregames.mesh.mp3
 SHA1-Digest: r6XbVrp1uO/8yufHB6a2chUXDrI=
@@ -2361,7 +2412,7 @@ Name: assets/menu/localize_de/start.png.mtx.mp3
 SHA1-Digest: NQGwjqG3g29lwP/71TFDtvK3UV4=
 
 Name: assets/hud/localize_ko/hints.png.mtx.mp3
-SHA1-Digest: ub7uOVCINEgfo36/6EHaWnC2WZQ=
+SHA1-Digest: D0fiJyzjEu1skqVCJ024/VUnML4=
 
 Name: assets/segments/endless/wide/obstacles/16_dropblocks.mesh.mp3
 SHA1-Digest: EwMvHI3HSIAMlmDZu4IzyR3SGhY=
@@ -2424,10 +2475,10 @@ Name: assets/menu/helpbutton.xml.mp3
 SHA1-Digest: kpfQpCAqSxyWX6OZx3H3IWVPxTQ=
 
 Name: assets/menu/localize_es/morebutton.png.mtx.mp3
-SHA1-Digest: vQRcQCkXURH+67wHjG+xT7eg63U=
+SHA1-Digest: UdmGmxcE7WaYLwFS2oo9+GnP5jQ=
 
 Name: assets/segments/basic/darker/2_bs_arch.xml.gz.mp3
-SHA1-Digest: X0iYn6tvIAe4diXpBg+qgQri7aA=
+SHA1-Digest: p+U5dHIFaIDOddCDuAuOT6k6HJE=
 
 Name: assets/segments/basic/basic/stairs.xml.gz.mp3
 SHA1-Digest: /tYH1phPdSa+cOdSHc9n4sXIg4M=
@@ -2550,7 +2601,7 @@ Name: assets/gfx/metalnormal.jpg.mtx.mp3
 SHA1-Digest: yioDtVOw0GsmPeJZDE8u3bXqlno=
 
 Name: assets/menu/localize_ko/gameover.png.mtx.mp3
-SHA1-Digest: fWQYgZNlj2rKtJ8MwuU9k30gDyE=
+SHA1-Digest: G0SIgnVkqwNrBugy9ZPrSeDQm4Q=
 
 Name: assets/segments/trailer_end.mesh.mp3
 SHA1-Digest: lVU2amgOj2KN0IR3hp34VmIz5e0=
@@ -2573,11 +2624,11 @@ SHA1-Digest: bg5fMAPj2Aybl+1NQ4UtMadSAV8=
 Name: assets/segments/canyon/trail/door.xml.gz.mp3
 SHA1-Digest: UyNfZbNthXYtQ8gF/NKa8Yfcw2A=
 
-Name: assets/fonts/smashhit_shadow.fnt.mp3
-SHA1-Digest: gN4SyEs96qF1rdC3LvQMXo2jXMI=
-
 Name: assets/menu/score/localize_ja/gc_out.png.mtx.mp3
 SHA1-Digest: oR7eybidX4I+Zr7fz3K3fXPgQJM=
+
+Name: assets/fonts/smashhit_shadow.fnt.mp3
+SHA1-Digest: gN4SyEs96qF1rdC3LvQMXo2jXMI=
 
 Name: assets/segments/river/path/start.mesh.mp3
 SHA1-Digest: CwAVYgudPVfTlsvSYnDE31rvNRM=
@@ -2595,7 +2646,7 @@ Name: assets/menu/button5.xml.mp3
 SHA1-Digest: V2wflBGY4n7T6+fIy/Cs9uBH+I8=
 
 Name: assets/menu/main.lua.mp3
-SHA1-Digest: 8flfK0Z7a+ipPSL9Rf+Wz4J/rlM=
+SHA1-Digest: xtG1Euq0umOXKMfP6gkAFKNTDqQ=
 
 Name: assets/menu/localize_es/toggle_graphics.png.mtx.mp3
 SHA1-Digest: 1Sc4dLcoTf9lhBClUN7Ca3Frdpo=
@@ -2634,7 +2685,7 @@ Name: assets/segments/canyon/cave/door.xml.gz.mp3
 SHA1-Digest: 8c2hK3bzzdLFkMUQTCHLrd79MVE=
 
 Name: assets/menu/localize_ko/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: FEmhN8dK86F9R9p1d5ZqESWdOF4=
+SHA1-Digest: iR8PFGqIyPE76eylwmbLhSeGlKM=
 
 Name: assets/segments/menu/6.xml.gz.mp3
 SHA1-Digest: +NzarMU8tOlgVLnykUDxBMlOBdY=
@@ -2649,7 +2700,7 @@ Name: assets/segments/canyon/columns/32_0.xml.gz.mp3
 SHA1-Digest: OEaeaLXJo0mqW2AWSzkUO5YQQXY=
 
 Name: assets/menu/localize_ko/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: NMHpH6j+jSkHI9oVfUAVvgI2AAM=
+SHA1-Digest: IfW73Gs/EJFmMoVH69XscU4ojio=
 
 Name: assets/segments/cave/narrow/16_1.xml.gz.mp3
 SHA1-Digest: /N07toAGucSnAR7SdNUG5LokoDE=
@@ -2782,7 +2833,7 @@ Name: assets/segments/cave2/narrow/start.mesh.mp3
 SHA1-Digest: Xz/+Jb3NREkKdgxg73c14FyWeps=
 
 Name: assets/menu/localize_ja/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: UIO5Sm11U8vUeU1waGGWm27ZUWQ=
+SHA1-Digest: i/t4gx2EDDZmY5hg7sf/dRj+GNI=
 
 Name: assets/segments/endless/narrow/scores/8_scoretop4.mesh.mp3
 SHA1-Digest: MtUfG9z5DA5PZwbcVMUUZ9fGd90=
@@ -2806,7 +2857,7 @@ Name: assets/menu/localize_zh/rate.png.mtx.mp3
 SHA1-Digest: HB8D/JO9MiKg5Xqq1qslujoAZnM=
 
 Name: assets/segments/basic/darker/chasms.mesh.mp3
-SHA1-Digest: pGTxOtT6juVGBOKtqetZT+ds4MI=
+SHA1-Digest: Cbw0/hoAuC/7zEeqcdgSZnAo4RQ=
 
 Name: assets/segments/menu/4.mesh.mp3
 SHA1-Digest: Bev4v2hnyI/qVyJoYAn877xC4Ag=
@@ -2869,11 +2920,11 @@ SHA1-Digest: 3+x2t/WZmDnWpRsGihxGb1wjfKk=
 Name: assets/hud/localize_it/appstore.png.mtx.mp3
 SHA1-Digest: dPBdX8rz8j9mggcT+LMxHEgCaUo=
 
-Name: assets/music/menu.ogg.mp3
-SHA1-Digest: 58yRhi+VnEJuyBM1DtVAslVKrWg=
-
 Name: res/drawable-tvdpi/icon.png
 SHA1-Digest: ThicXbyg0cQl1fazGuQrFQuJlnQ=
+
+Name: assets/music/menu.ogg.mp3
+SHA1-Digest: 58yRhi+VnEJuyBM1DtVAslVKrWg=
 
 Name: assets/segments/endless/wide/scores/8_scoretop3.xml.gz.mp3
 SHA1-Digest: uifw2fok8ECC7Qh+N62tQNcMo0E=
@@ -2973,7 +3024,7 @@ Name: assets/segments/endless/narrow/fillers/16_1.mesh.mp3
 SHA1-Digest: QapOHGnno14qgI56UH5KZ4QbLms=
 
 Name: assets/menu/localize_de/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: kVRAf3bBu/9aoFf7Jn5EEbRATsM=
+SHA1-Digest: e41ySQaZMvp0suYtn+KWniuLoTo=
 
 Name: assets/segments/endless/space/scores/16_0.mesh.mp3
 SHA1-Digest: N+X70b6e/v0T4Q+mv1ToHdIMTEs=
@@ -2982,13 +3033,13 @@ Name: assets/segments/endless/open/scores/16_scoretops_x4.mesh.mp3
 SHA1-Digest: njpSTUfXHpsmkA1M7qQJpdnP+P8=
 
 Name: assets/menu/localize_es/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: Rap0bs4dq4Z+MruVaXXzMpEt2+0=
+SHA1-Digest: ur1lYCgG64jxcLINlSTO2ch/SHA=
 
 Name: assets/menu/localize_ja/menu_more.png.mtx.mp3
 SHA1-Digest: /mOjc7SD82yqJ95jdKH3+J4i20M=
 
 Name: assets/menu/localize_fr/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: Q40Jge33gK/vFuythVww/IqzR0I=
+SHA1-Digest: SBCH/i6G3G9bavPByx7gKcG3JWM=
 
 Name: assets/segments/cave/corridor/start.xml.gz.mp3
 SHA1-Digest: 5VC5qy2FUmhpgBJIh/DDy8fe1MQ=
@@ -3113,8 +3164,14 @@ SHA1-Digest: 8jPhYWNLpC4wZpv80hNBLb45PMQ=
 Name: assets/segments/canyon/columns/16_0.xml.gz.mp3
 SHA1-Digest: DoYc+OceMS8L0olZGzcIOUXZRSA=
 
+Name: assets/menu/localize_it/gameover_restart.png.mtx.mp3
+SHA1-Digest: v/DirLG1bCUtVBYx8OVTLfW2bOQ=
+
 Name: assets/segments/ocean/tunnel/door.xml.gz.mp3
 SHA1-Digest: GjWSjeFk2uiRNdLVevNVRfIrb80=
+
+Name: assets/menu/gameover_continue_select.png.mtx.mp3
+SHA1-Digest: QGEkDVE0j8XpXpTE+XNqMJQ5jCk=
 
 Name: assets/menu/upgradebutton.xml.mp3
 SHA1-Digest: oxERAZqKCkHXL4JoyxXWvWWDzc4=
@@ -3126,7 +3183,7 @@ Name: assets/segments/endless/open/obstacles/8_foldwindow2.xml.gz.mp3
 SHA1-Digest: XX1sftx0AhihkUWQwH96QKBvjZM=
 
 Name: assets/menu/options.xml.mp3
-SHA1-Digest: rlzU5ASsGZkDhp8STaplr5xrrnU=
+SHA1-Digest: 9bVAjcnDsu79JtDOGOvG0p+7H6E=
 
 Name: assets/segments/endless/wide/scores/16_scoretops_x8.xml.gz.mp3
 SHA1-Digest: R9KJrGm6dFnzlLQuZPJ0dq0/Xbc=
@@ -3315,7 +3372,7 @@ Name: assets/segments/endless/wide/fillers/8_3.mesh.mp3
 SHA1-Digest: VSvEeXOXp88WtLebSaBt7fDR9T0=
 
 Name: assets/menu/localize_es/gameover.png.mtx.mp3
-SHA1-Digest: hfVXFEsSzTTESZV+tZkBzeWY7jY=
+SHA1-Digest: m/PpvJXrDiCq6himwqHRMFa+w18=
 
 Name: res/drawable-hdpi/common_signin_btn_text_pressed_dark.9.png
 SHA1-Digest: VBdIt82ioiZO0Qmr7/J+8sPnop8=
@@ -3335,11 +3392,11 @@ SHA1-Digest: +QY8+cqcJnHGlrHE1yu1oMRTo50=
 Name: assets/segments/night/part2/dna_dec.mesh.mp3
 SHA1-Digest: kbYQqBPWNRIOORW59kPRiwyrlIE=
 
-Name: assets/hud/localize_ru/checkpoint.png.mtx.mp3
-SHA1-Digest: 93EBDPdbNkLMsiHdgpjmKl99Aqo=
-
 Name: res/drawable-xhdpi/common_signin_btn_text_disabled_light.9.png
 SHA1-Digest: UbXqMwM30HBljuHn+la04UPzB1Y=
+
+Name: assets/hud/localize_ru/checkpoint.png.mtx.mp3
+SHA1-Digest: 93EBDPdbNkLMsiHdgpjmKl99Aqo=
 
 Name: assets/segments/endless/start.xml.gz.mp3
 SHA1-Digest: kTiSsHuCnK0hr7MsheFTX7rg3fc=
@@ -3360,7 +3417,7 @@ Name: assets/snd/ball/floor2.ogg.mp3
 SHA1-Digest: KdmBhT7ytvTvh/hc6DClMHlKTmY=
 
 Name: assets/menu/localize_ru/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: M6yq6WUGmthyJK9IPODfibGNt1Q=
+SHA1-Digest: C8RfDUhFwLBL68NG/aMK7ASlKbg=
 
 Name: assets/rooms/river/path2.lua.mp3
 SHA1-Digest: u1KEDgT83skr455B3BueahC6eBY=
@@ -3466,6 +3523,9 @@ SHA1-Digest: yaSAtx7+wza6Q5EYh6jU5UC1dXQ=
 Name: assets/segments/basic/basic/stairs2.xml.gz.mp3
 SHA1-Digest: iDxqqruZaygb9A90mDiEMBv3myI=
 
+Name: assets/menu/localize_es/gameover_continue.png.mtx.mp3
+SHA1-Digest: kBWTzaflFni8NnzSqVXdmor4xjo=
+
 Name: assets/segments/holodeck/bonus_start.xml.gz.mp3
 SHA1-Digest: qJh48FabqSNSC9hV+4cPR1sx0wg=
 
@@ -3529,6 +3589,9 @@ SHA1-Digest: i03wjktjOo67igUmvVdPmlYvGLU=
 
 Name: assets/rooms/cave/hall.lua.mp3
 SHA1-Digest: +kiMpLYhNdXzwGhgyqf5hyM5El4=
+
+Name: assets/menu/localize_ko/gameover_restart.png.mtx.mp3
+SHA1-Digest: yRM2wZ8HftjcOvxHVr1qIF4j43s=
 
 Name: assets/segments/phosphor/part4/16_0.mesh.mp3
 SHA1-Digest: 01nacOIkTBEuLAvL7PEfbKPwJuE=
@@ -3597,7 +3660,7 @@ Name: assets/segments/endless/wide/scores/8_scoretop4.mesh.mp3
 SHA1-Digest: 4TMxMoJSIHWelRZWmzBByLMxAT4=
 
 Name: assets/menu/localize_fr/gameover.png.mtx.mp3
-SHA1-Digest: NK71DI/rFoWXnShekrPmUI84DLU=
+SHA1-Digest: gmK6hz7X0yhryp/p4rARmFzTYkM=
 
 Name: assets/hud/puhud_nitroballs.xml.mp3
 SHA1-Digest: +F6cCOJWxmJpD/m1G//mgEn0GAc=
@@ -3612,7 +3675,7 @@ Name: assets/segments/basic/darker/powerup.xml.gz.mp3
 SHA1-Digest: 1AI6V5GGjjgnnfrS4dD8TmTqouk=
 
 Name: assets/menu/localize_ja/options.png.mtx.mp3
-SHA1-Digest: uBe7ubD5Hqtvf6awrVmYzlChfAU=
+SHA1-Digest: CBWZGruQAQ/NLILs8OPONetTfRI=
 
 Name: assets/segments/endless/open/powerups/8_slomo2.mesh.mp3
 SHA1-Digest: GRxS29nmw7NhU9KgTkEQ7b8nvaQ=
@@ -3639,7 +3702,7 @@ Name: assets/snd/ball/object0.ogg.mp3
 SHA1-Digest: XL7BzZCI8UvqiCRgWsgAau+jqSw=
 
 Name: assets/menu/localize_fr/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: RB4kgh203JoYW7fYRzmCqu/ifUQ=
+SHA1-Digest: 515p61UJiBUJs8RyHjrXseUqhPM=
 
 Name: assets/menu/premium.png.mtx.mp3
 SHA1-Digest: km5bz/6XWqrFXQ9r2ixKSguoZ9c=
@@ -3685,6 +3748,9 @@ SHA1-Digest: oLcT55tvMo5i5bdMNMtO/T/ppH0=
 
 Name: assets/segments/endless/narrow/fillers/8_0.xml.gz.mp3
 SHA1-Digest: oZiyB5AwVI+wC7ouobB8d2aEPeY=
+
+Name: assets/menu/gameover_restart.xml.mp3
+SHA1-Digest: dfUDk/WYeetdSrwMAdupHTfhHLI=
 
 Name: assets/segments/endless/narrow/scores/8_scoretop3.xml.gz.mp3
 SHA1-Digest: D6JoPAwxi581TwMOIWChY+XCIA8=
@@ -3734,6 +3800,9 @@ SHA1-Digest: CdNbAADsEcM72BCOv4N363U29JE=
 Name: assets/music/1.ogg.mp3
 SHA1-Digest: oSuldJO+DEVktkJLrFdWpc7M71o=
 
+Name: assets/segments/endless/space/start.mesh.mp3
+SHA1-Digest: oLUhWECLeeAzaP1HB9cbwR6fExI=
+
 Name: assets/segments/cave/spin/16_0.mesh.mp3
 SHA1-Digest: wf9P9CG7DHJQgBNdtysDJ70EyU4=
 
@@ -3745,6 +3814,9 @@ SHA1-Digest: PC+EqkQBTT/sR9p5MMhXKb2WxR8=
 
 Name: assets/snd/object/hit_l0.ogg.mp3
 SHA1-Digest: moFWeVWoP9+rkJGhlZOL6W+pvUY=
+
+Name: assets/segments/endless/wide/start.xml.gz.mp3
+SHA1-Digest: N88Uckda3E6E0CG+iHESRKGo5wU=
 
 Name: assets/segments/river/path/score.mesh.mp3
 SHA1-Digest: npAR9iAMX5Bfzj9ZJZQCCUB4TuY=
@@ -3760,6 +3832,9 @@ SHA1-Digest: dDIaNdYIZ1Tj7+aolxX1CaG57oI=
 
 Name: assets/segments/canyon/columns/4_0.mesh.mp3
 SHA1-Digest: qwMtR4ybUqgaqWfnJPHoZx8b5b8=
+
+Name: assets/segments/endless/open/start.xml.gz.mp3
+SHA1-Digest: JYtrUwUOHv+Op+tJ8PAUhXCRfAw=
 
 Name: assets/segments/endless/space/obstacles/16_3.mesh.mp3
 SHA1-Digest: Ullzh2RWzcnsiuaaxb00A7oLGl8=
@@ -3783,7 +3858,7 @@ Name: assets/segments/basic/dark/start.xml.gz.mp3
 SHA1-Digest: eamYDX+zBQTGuDVK7KSE+efBG7M=
 
 Name: assets/menu/localize_zh/options.png.mtx.mp3
-SHA1-Digest: O0QhyUk48oImz1XcNJorAu3P1vo=
+SHA1-Digest: 8IcXVlyc791+PM6oGaHsH9FAXGY=
 
 Name: assets/shaders/2dtex.glsl.mp3
 SHA1-Digest: 7i9YF5ERXHNZoDrxrIZhxKfaqp4=
@@ -3809,6 +3884,9 @@ SHA1-Digest: 5JftZHF2pH7uYPnnOthjUo7CZ/M=
 Name: assets/segments/endless/wide/fillers/8_3.xml.gz.mp3
 SHA1-Digest: 5WlZre1r1UzkZdLYp6fSGHqtYWM=
 
+Name: assets/menu/localize_fr/gameover_restart.png.mtx.mp3
+SHA1-Digest: MKBJl6ZWkseQPmki0k8Hgz5cFLQ=
+
 Name: assets/segments/cave2/top/door2.xml.gz.mp3
 SHA1-Digest: Z0WGjkp4c7GD5Obm9eYjFYahEKI=
 
@@ -3831,10 +3909,10 @@ Name: assets/segments/menu/hidden.xml.gz.mp3
 SHA1-Digest: jbfAjlXEzfZrcpLQiHaYOKaimxA=
 
 Name: assets/menu/localize_ja/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: /Ej8Arnro5G2LbqjA8Cin6W1VAk=
+SHA1-Digest: vXjNa/PT0D6Nt1o4CEuN3LoYKQI=
 
 Name: assets/menu/localize_zh/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: D25/w6qdXjpwWOS1U2F7q54ZXx4=
+SHA1-Digest: 0+SF+bkEsES7InI/ygsG+XQQI2M=
 
 Name: assets/hud/localize_es/hintgameover.png.mtx.mp3
 SHA1-Digest: IomXMD77HAg8fC0IZCjm+mkj6eI=
@@ -3882,7 +3960,7 @@ Name: assets/menu/showcheckpoint.ogg.mp3
 SHA1-Digest: I17oEcijNdEOXHpJMHUJGC5SmMc=
 
 Name: assets/menu/localize_es/helpbutton.png.mtx.mp3
-SHA1-Digest: pJh8n2H1sfpg1mA0q/hp7AZWqp0=
+SHA1-Digest: ZTjGr8Mu1kfh9/CwomQV1FQo6nU=
 
 Name: assets/hud/powerup_bg.png.mtx.mp3
 SHA1-Digest: urOzbQRb3hu2m15ui+XlDMKItYs=
@@ -3891,10 +3969,10 @@ Name: assets/snd/rewind.ogg.mp3
 SHA1-Digest: WjOFGIM1hxup3EZpVxvc/9/Zr9E=
 
 Name: assets/menu/localize_it/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: 2u76JXY3qq4cfXE1jF6GCKBdolY=
+SHA1-Digest: QWjd2FtAs7g1Jquopaz08kX4ABg=
 
 Name: classes.dex
-SHA1-Digest: 4GFeD8O3855T0cHcvV+J5vgUiH0=
+SHA1-Digest: 9sBZ4FjPq5LtuBa5eBW+DvaTmRE=
 
 Name: assets/segments/cave2/top/16_4.xml.gz.mp3
 SHA1-Digest: SKgSbZxpX4ageFO1akoe4uoYtMw=
@@ -3911,6 +3989,9 @@ SHA1-Digest: QUo3hktpGUwzrUCX/fl/kXg9m1E=
 Name: assets/segments/empty.mesh.mp3
 SHA1-Digest: iWHwTf4wa1EerkLisWIH8bpSEVc=
 
+Name: assets/menu/localize_ja/gameover_continue.png.mtx.mp3
+SHA1-Digest: I8YAzwq/sK9LZX3REynU/45NFpQ=
+
 Name: assets/menu/upgrade_restore.xml.mp3
 SHA1-Digest: sHcnYCEfIxNxi3JSXxMB33Ud4Jc=
 
@@ -3918,7 +3999,7 @@ Name: assets/segments/phosphor/part1/door.mesh.mp3
 SHA1-Digest: I8JqIsqQEJd6MNpYkTtksd23Pgg=
 
 Name: assets/hud/localize_it/hints.png.mtx.mp3
-SHA1-Digest: Rjxrys08aL1slzZ81eJ1+PHTkdc=
+SHA1-Digest: TekRg/DxftloNkf0/rcY0ARYOKY=
 
 Name: assets/menu/score/localize_es/gc_out.png.mtx.mp3
 SHA1-Digest: DqgM6jCEC0XafrJoK6QATeWGtDM=
@@ -4011,11 +4092,14 @@ SHA1-Digest: dOxrbcQCbYudAiqRWqt1aEsTMJA=
 Name: assets/segments/cave2/top/16_0.mesh.mp3
 SHA1-Digest: 7FRyfmUtOb3+pYMSMf69LZsgBfM=
 
+Name: assets/menu/localize_de/gameover_continue.png.mtx.mp3
+SHA1-Digest: eKlNzcINI1BBYGG2RLe5Vt+frXc=
+
 Name: assets/segments/endless/open/scores/8_scoretop3.xml.gz.mp3
 SHA1-Digest: siHqpGeKPwn5WhjrlEk5vtwmwCs=
 
 Name: assets/menu/localize_zh/gameover.png.mtx.mp3
-SHA1-Digest: JKu+bYZcV1rUQR9rjzns5ffPa6U=
+SHA1-Digest: pio2WSHNUh2d3p4yXaOqD2JcsVI=
 
 Name: assets/segments/cave2/narrow/16_4.mesh.mp3
 SHA1-Digest: FIIp3vpmjBXg56I0HxwWNZ9ZffQ=
@@ -4044,6 +4128,9 @@ SHA1-Digest: z1zAZRE9JYpgN4JZH9LAofKrfV8=
 Name: assets/snd/breakable/glass_l1.ogg.mp3
 SHA1-Digest: DprYkNGl+yPbEmW+Rm6iRi7bbHM=
 
+Name: assets/menu/gameover_continue.png.mtx.mp3
+SHA1-Digest: owJ6nwj+fhiFE0ruvjYJ3AvLw0Q=
+
 Name: assets/segments/phosphor/part1/start.mesh.mp3
 SHA1-Digest: UI416FETiqkKGhKNv4C0H+rpY/0=
 
@@ -4051,7 +4138,7 @@ Name: assets/snd/ball/wall1.ogg.mp3
 SHA1-Digest: 8hQAEelbB5cb3O2LMaHvGatqM5Q=
 
 Name: assets/menu/localize_ru/gameover.png.mtx.mp3
-SHA1-Digest: ErnuEmkKslc5WwCWyXfw2kKndNU=
+SHA1-Digest: MshsMtsYFiF7r8A1PNuWraBFMQw=
 
 Name: assets/hud/puhud_homing.xml.mp3
 SHA1-Digest: TavkpYE8VdRdMJSP805QFtf/5Jw=
@@ -4156,7 +4243,7 @@ Name: assets/segments/basic/basic/chasms.xml.gz.mp3
 SHA1-Digest: CAGLSlUEIEJsdaVAndJhSte69M0=
 
 Name: assets/segments/basic/darker/bs.mesh.mp3
-SHA1-Digest: BIahaoAu+RVkHB+l0G0rKdSTfyA=
+SHA1-Digest: GG5XuDG7LZucJurpk9PHvVdgmlo=
 
 Name: assets/menu/localize_ko/upgradebutton.png.mtx.mp3
 SHA1-Digest: Y/WPgWbn0WQjC1Gr4aVEOPUkI/o=
@@ -4213,7 +4300,7 @@ Name: assets/segments/cave2/bottom/16_1.mesh.mp3
 SHA1-Digest: Imlr/GKQWBkC9gV58gFAYRcUQvU=
 
 Name: assets/rooms/endless/narrow0.lua.mp3
-SHA1-Digest: RYFlZTvdcWaQy67jKi3q9DrFuHQ=
+SHA1-Digest: Ji87V+s+LG8TuiLbvGbZBXQEcXw=
 
 Name: assets/segments/cave2/bottom/16_0.mesh.mp3
 SHA1-Digest: 2ZadbP0A8MwtyU++Y+PuPXdkcBg=
@@ -4221,11 +4308,11 @@ SHA1-Digest: 2ZadbP0A8MwtyU++Y+PuPXdkcBg=
 Name: assets/segments/endless/narrow/powerups/8_ballfrenzy.xml.gz.mp3
 SHA1-Digest: WlfPxqxxzuNG+y5zTFmC8eQXSxM=
 
-Name: assets/menu/loading_bg.png.mtx.mp3
-SHA1-Digest: KGjtPnsXjPY1QIB3QF5zaRAT3Ak=
-
 Name: res/drawable-mdpi/icon.png
 SHA1-Digest: ANFA0vCtzdDel/6Jp0Jfxze1DBA=
+
+Name: assets/menu/loading_bg.png.mtx.mp3
+SHA1-Digest: KGjtPnsXjPY1QIB3QF5zaRAT3Ak=
 
 Name: assets/obstacles/credits2.lua.mp3
 SHA1-Digest: J2O3cv2166fjswkFlxJnpF5mblI=
@@ -4253,6 +4340,9 @@ SHA1-Digest: I03O8GALu1BWwtwNttfYnweZ4lQ=
 
 Name: assets/fonts/smashhit_shadow.png.mtx.mp3
 SHA1-Digest: kxDVWuOQjbHtq2TFxWmwT1ky+8Q=
+
+Name: assets/menu/localize_ru/gameover_restart.png.mtx.mp3
+SHA1-Digest: U6bv7JtByQO+3JP6eZZxU6JCIH4=
 
 Name: assets/fonts/numbers_bold_shadow.fnt.mp3
 SHA1-Digest: e7cFA+Jjt32KFUiQWtBPhwHkyaU=
@@ -4318,7 +4408,7 @@ Name: assets/segments/cave/corridor/8_0.mesh.mp3
 SHA1-Digest: devJdR+kxuqNBwuTPVaiYsgqBOA=
 
 Name: assets/menu/localize_es/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: ZEFCvQzvmEN5P8LxSbRskxAfxHg=
+SHA1-Digest: 1kcgI54yMyzzfuCw+aGIgR850do=
 
 Name: assets/segments/menu/1.xml.gz.mp3
 SHA1-Digest: a1f2qA9F/qnjldmRJ7+wU2XXK8E=
@@ -4339,7 +4429,7 @@ Name: assets/segments/ocean/stairs/16_0.mesh.mp3
 SHA1-Digest: Wwa/R1eAmX9rFg2Of36ISDy4p2g=
 
 Name: assets/menu/localize_ru/options.png.mtx.mp3
-SHA1-Digest: bTRBQM4fNV8dVnjy+U+rxnHpqeQ=
+SHA1-Digest: Gab36C2CFnLUjoJ9siMKRHVWRtw=
 
 Name: assets/rooms/segmenttest.lua.mp3
 SHA1-Digest: qHxCtWEf91xsEctNIUGkrL7Uzx0=
@@ -4373,7 +4463,7 @@ Name: assets/menu/logo_crash.ogg.mp3
 SHA1-Digest: HLvJwajO8lk1OLlGUvHNk3/NtU4=
 
 Name: assets/menu/localize_fr/options.png.mtx.mp3
-SHA1-Digest: +Qp3BOtFHAVcpgdh6c4C0G3b9XM=
+SHA1-Digest: IVXWTUv9nwk1Ll8Zfyva6WVpSjg=
 
 Name: assets/menu/localize_fr/upgradebutton.png.mtx.mp3
 SHA1-Digest: BTTxfAaB1ZyuUjKt2QU+jlEa8us=
@@ -4391,7 +4481,7 @@ Name: res/drawable-hdpi/common_signin_btn_text_normal_light.9.png
 SHA1-Digest: BPO7rZUizcNQMnWeRsW2OCnWgH4=
 
 Name: resources.arsc
-SHA1-Digest: lErrdm6v8w5Xdb3CU5Cb3StUQr0=
+SHA1-Digest: HMJ9tnrnWaoFxfmEx6dLRj853kQ=
 
 Name: res/drawable-hdpi/common_signin_btn_text_pressed_light.9.png
 SHA1-Digest: Wx/93xRl4fEGrkADqVPH6ShswfU=
@@ -4403,7 +4493,7 @@ Name: assets/hud/border.png.mtx.mp3
 SHA1-Digest: K6VoKYwi2aEwoh2LWisESntXnWc=
 
 Name: assets/menu/localize_zh/helpbutton.png.mtx.mp3
-SHA1-Digest: ruV1qjDrgUzXdtxsWvxAwyUCDLQ=
+SHA1-Digest: /nA1woJn5BiyUJnft81YN/Q3sjE=
 
 Name: assets/menu/localize_ru/menu_more.png.mtx.mp3
 SHA1-Digest: tigQmfJ3IUvrH6GA6wWsSOAkg/8=
@@ -4421,7 +4511,7 @@ Name: assets/segments/ocean/stairs/8_0.mesh.mp3
 SHA1-Digest: +e5opUDqTMvFfcTRNQiB4oTluRQ=
 
 Name: assets/menu/localize_zh/upgrade_checkpoints.png.mtx.mp3
-SHA1-Digest: 4qJKF5gYzBBp1UILBv2CswIcy24=
+SHA1-Digest: h7wlLr8uK+wj8QHJAXiRBA1hi3M=
 
 Name: assets/segments/endless/open/powerups/8_ballfrenzy2.xml.gz.mp3
 SHA1-Digest: HPiPXYNGpgbyDM2N75h67xuV8lk=
@@ -4430,7 +4520,7 @@ Name: assets/menu/logo_clean.png.mtx.mp3
 SHA1-Digest: pFtPDfdWIvhL8QRK0glc1q0sySk=
 
 Name: assets/hud/streak_balls.png.mtx.mp3
-SHA1-Digest: VDcyRReL/NW8Y8JsR8drKNQ5wfs=
+SHA1-Digest: 0nOuvqKpA6NxBDSRdu6d9szgg+U=
 
 Name: assets/segments/endless/open/scores/8_scoretop.mesh.mp3
 SHA1-Digest: W8+Hc2nLUsGHWcyLruMQ5yLFOw8=
@@ -4474,6 +4564,9 @@ SHA1-Digest: 5aU26YUM1tCN3ly+ADFLcyHbvwA=
 Name: assets/snd/breakable/glass_s1.ogg.mp3
 SHA1-Digest: 9HWskuoRfbxq5aRyfDMJfMs74WM=
 
+Name: assets/menu/toggle_sound.png.mtx.mp3
+SHA1-Digest: 5JfkEoOsXAo5v/t98YhixM1SDlA=
+
 Name: assets/segments/holodeck/calm1.mesh.mp3
 SHA1-Digest: hWt10X2ZOuAEqHEDJw/rRqt1nLw=
 
@@ -4511,7 +4604,7 @@ Name: assets/segments/river/path2/16_3.mesh.mp3
 SHA1-Digest: 2UNmzHsiKqH04tA6MDgz7V+wwYs=
 
 Name: assets/menu/localize_es/upgrade_cloud.png.mtx.mp3
-SHA1-Digest: ZKBknpyhjDQT06JAR74eDIBADps=
+SHA1-Digest: 0FVGAQuKsopnshA5GWXRI4hncmA=
 
 Name: assets/segments/night/part1/elgrid_st.mesh.mp3
 SHA1-Digest: J4dURH9M+oy4yeohQQ7M9X9pLSQ=
@@ -4538,10 +4631,10 @@ Name: assets/obstacles/suspendbox.lua.mp3
 SHA1-Digest: o2UBLIJMm/fmhzc2aRu9jzCDIrc=
 
 Name: assets/menu/upgrade_statistics.png.mtx.mp3
-SHA1-Digest: LwpPNxs2Y+8H3vvH8ATixw7DrPk=
+SHA1-Digest: EMl1Q0KVbosgxLgeKt0vTzJRcE0=
 
 Name: lib/armeabi-v7a/libsmashhit.so
-SHA1-Digest: LDZ824Go3dDflY+H0BmEAGLQ5Ec=
+SHA1-Digest: YROd34dXw9k3k87DWT3pPoTvr7Q=
 
 Name: assets/segments/night/part3/door.xml.gz.mp3
 SHA1-Digest: HycaW/nO4s6aLouvEO2LuYQOKOg=
@@ -4590,6 +4683,9 @@ SHA1-Digest: EpMBwpNWhRDSrpopwPKYy/gcs2E=
 
 Name: assets/segments/canyon/columns/start.mesh.mp3
 SHA1-Digest: nOUtMq6fjQwcaXWOBBBJD4qqzow=
+
+Name: assets/menu/localize_zh/gameover_restart.png.mtx.mp3
+SHA1-Digest: k1Etim2gTYKKzxSEDyl9qFqJG3Q=
 
 Name: assets/segments/canyon/trail/8_0.mesh.mp3
 SHA1-Digest: 9oLyomtundDogYLxbRK+CpYrLV4=

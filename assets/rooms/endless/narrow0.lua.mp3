@@ -48,12 +48,7 @@ function init()
 	confSegment("endless/narrow/powerups/8_nitroballs2", .1 * invDifficulty)
 	
 	l = 0
-	
-	if pEndless == 1 then
-		l = l + mgSegment("endless/narrow/start", -l)	
-	else
-		l = l + mgSegment("endless/narrow/fillers/16_0", -l)
-	end
+	l = l + mgSegment("endless/narrow/start", -l)	
 
 	while l < pLength do
 		s = nextSegment()

@@ -54,12 +54,7 @@ function init()
 	confSegment("endless/open/powerups/8_slomo2", .1 * invDifficulty)
 	
 	l = 0
-	
-	if pEndless == 1 then
-		l = l + mgSegment("endless/open/open/start", -l)	
-	else
-		l = l + mgSegment("endless/open/fillers/16_0", -l)
-	end
+	l = l + mgSegment("endless/open/start", -l)	
 	
 	while l < pLength do
 		s = nextSegment()

@@ -179,9 +179,13 @@ function init()
 		mgSetPos(puStack[i], left+100-i*40, bottom-100)
 	end
 	
+	puCorner = mgCreateImage("pucorner.png")
+	mgSetOrigo(puCorner, "bottomleft")
+	mgSetPos(puCorner, left, bottom)
+	
 	pu = mgCreateUi("pu.xml")
 	mgSetOrigo(pu, "center")
-	mgSetPos(pu, centerX, bottom-100)
+	mgSetPos(pu, left+100, bottom-100)
 	mgSetAlpha(pu, 0)
 	
 	puActivateSound = mgCreateSound("powerup.ogg")
@@ -220,22 +224,22 @@ function pushPowerup()
 		if visible then
 			local j = i-1
 			if i==0 then
-				mgSetPos(puStack[i], centerX, bottom-200)
-				mgSetPos(puStack[i], centerX, bottom-100, "easeout", 0.4)
+				mgSetPos(puStack[i], left+200, bottom-200)
+				mgSetPos(puStack[i], left+100, bottom-100, "easeout", 0.4)
 				mgSetScale(puStack[i], 2, 2)
 				mgSetScale(puStack[i], 1, 1, "easeout", 0.4)
 				mgSetAlpha(puStack[i], 0)
 				mgSetAlpha(puStack[i], 1, "easeout", 0.4)
 			elseif i==1 then
-					mgSetPos(puStack[i], centerX, bottom-100)
-					mgSetPos(puStack[i], centerX-120, bottom-70, "easeout", 0.4)
+					mgSetPos(puStack[i], left+100, bottom-100)
+					mgSetPos(puStack[i], left+100, bottom-220, "easeout", 0.4)
 					mgSetScale(puStack[i], 1, 1)
 					mgSetScale(puStack[i], 0.5, 0.5, "easeout", 0.4)
 					mgSetAlpha(puStack[i], 1)
 					mgSetAlpha(puStack[i], 0.3, "easeout", 0.4)
 			else
-				mgSetPos(puStack[i], centerX-30-90*j, bottom-70)
-				mgSetPos(puStack[i], centerX-30-90*i, bottom-70, "easeout", 0.4)
+				mgSetPos(puStack[i], left+100, bottom-130-90*j)
+				mgSetPos(puStack[i], left+100, bottom-130-90*i, "easeout", 0.4)
 				mgSetScale(puStack[i], 0.5, 0.5)
 				mgSetAlpha(puStack[i], 0.3)
 			end
@@ -264,17 +268,17 @@ function popPowerup()
 		end
 		if visible then
 			local j = i-1
-			mgSetPos(puStack[i], centerX-30-90*i, bottom-70)
-			mgSetPos(puStack[i], centerX-30-90*j, bottom-70, "easeout", 0.4)
+			mgSetPos(puStack[i], left+100, bottom-130-90*i)
+			mgSetPos(puStack[i], left+100, bottom-130-90*j, "easeout", 0.4)
 			if i==0 then
 				mgSetAlpha(puStack[i], 1)
 				mgSetAlpha(puStack[i], 0, "easeout", 0.4)
-				mgSetPos(puStack[i], centerX, bottom-100)
-				mgSetPos(puStack[i], centerX, bottom-200, "easeout", 0.4)
+				mgSetPos(puStack[i], left+100, bottom-100)
+				mgSetPos(puStack[i], left+200, bottom-200, "easeout", 0.4)
 				mgSetScale(puStack[i], 1, 1)
 				mgSetScale(puStack[i], 2, 2, "easeout", 0.4)
 			elseif i==1 then
-				mgSetPos(puStack[i], centerX, bottom-100, "easeout", 0.4)
+				mgSetPos(puStack[i], left+100, bottom-100, "easeout", 0.4)
 				mgSetScale(puStack[i], 0.5, 0.5)
 				mgSetScale(puStack[i], 1, 1, "easeout", 0.4)
 				mgSetAlpha(puStack[i], 0.3)
@@ -509,11 +513,12 @@ function draw()
 
 	lastBallCount = ballCount
 	
+	mgSetAlpha(puCorner, 2*math.max(mgGetAlpha(puStack[0]), mgGetAlpha(puStack[1])))
+	mgDraw(puCorner)
 	for i=#puStack,0,-1 do
 		mgDraw(puStack[i])
 	end
 	mgDraw(pu)
-
 	mgDraw(hintImg)
 
 	mgDraw(countdown)

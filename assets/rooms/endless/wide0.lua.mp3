@@ -39,12 +39,7 @@ function init()
 	confSegment("endless/wide/powerups/8_nitro", .1)
 	
 	l = 0
-	
-	if pEndless == 1 then
-		l = l + mgSegment("endless/start", -l)	
-	else
-		l = l + mgSegment("endless/wide/fillers/8_1", -l)
-	end
+	l = l + mgSegment("endless/wide/start", -l)	
 	
 	while l < pLength do
 		s = nextSegment()

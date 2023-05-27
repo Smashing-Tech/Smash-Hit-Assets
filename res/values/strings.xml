@@ -22,7 +22,7 @@
     <string name="location_client_ulr_inactive_age_unknown">AgeUnknown</string>
     <string name="location_client_ulr_inactive_unknown_restriction">UnknownRestriction</string>
     <string name="app_id">1072460310481</string>
-    <string name="app_name">SmashHit</string>
+    <string name="app_name">Smash Hit</string>
     <string name="quit_dialog_title">Quit</string>
     <string name="quit_dialog_body">Are you sure you want to quit Smash Hit?</string>
     <string name="buy_button">Buy app</string>

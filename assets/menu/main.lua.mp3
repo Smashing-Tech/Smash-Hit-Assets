@@ -69,6 +69,8 @@ function init()
 	panSnd = mgCreateSound("camera_pan.ogg")
 	loadingClick = mgCreateSound("loadingclick.ogg")
 	
+	continueLevel = 1
+
 	rate = -1
 end
 
@@ -111,12 +113,15 @@ function load()
 	optionsButton = mgCreateUi("optionsbutton.xml")
 	mgSetOrigo(optionsButton, "bottomright")
 	mgSetPos(optionsButton, right-649, bottom-55)
+
+	optionsCanvas = mgCreateCanvas(1,1)
+	mgSetPos(optionsCanvas, centerX, centerY)
+	mgSetScale(optionsCanvas, .5, .5)
+	mgSetAlpha(optionsCanvas, 0)
 	
 	optionsUi = mgCreateUi("options.xml")
 	mgSetOrigo(optionsUi, "center")
-	mgSetPos(optionsUi, centerX, centerY)
-	mgSetScale(optionsUi, .5, .5)
-	mgSetAlpha(optionsUi, 0)
+	mgSetPos(optionsUi, 0, 0)
 
 	haloCircle = mgCreateImage("menu_halo.png")
 	mgSetOrigo(haloCircle, "center")
@@ -125,7 +130,7 @@ function load()
 	
 	moreButton = mgCreateUi("morebutton.xml")
 	mgSetOrigo(moreButton, "bottomright")
-	mgSetPos(moreButton, right-347, bottom-55)
+	mgSetPos(moreButton, right-55, bottom-55)
 	
 	scoreButton = mgCreateUi("scorebutton.xml")
 	mgSetOrigo(scoreButton, "bottomleft")
@@ -135,14 +140,30 @@ function load()
 	mgSetOrigo(moreUi, "center")
 	mgSetPos(moreUi, centerX, centerY)
 	mgSetAlpha(moreUi, 0)
+
+	gameOverCanvas = mgCreateCanvas(1024, 1024)
+	mgSetOrigo(gameOverCanvas, "center")
+	mgSetPos(gameOverCanvas, centerX, centerY)
+	mgSetScale(gameOverCanvas, 0, 0)
+	mgSetAlpha(gameOverCanvas, 0)
 	
-	gameOver = mgCreateUi("gameover.xml")
-	mgSetPos(gameOver, centerX, centerY)
-	mgSetScale(gameOver, 0, 0)
-	mgSetAlpha(gameOver, 0)
+	gameOver = mgCreateImage("gameover.png")
+	mgSetPos(gameOver, 512, 512)
+	
+	gameOverRestart = mgCreateUi("gameover_restart.xml")
+	mgSetOrigo(gameOverRestart, "center")
+	mgSetPos(gameOverRestart, 512, 700)
+
+	gameOverContinue = mgCreateUi("gameover_continue.xml")
+	mgSetOrigo(gameOverContinue, "center")
+	mgSetPos(gameOverContinue, 512, 700)
+
+	gameOverContinueText = mgCreateText("numbers_light", true)
+	mgSetPos(gameOverContinueText, 495, 755)
+	mgSetColor(gameOverContinueText, 0, 0, 0)
 
 	gameOverScore = mgCreateText("numbers_bold", true)
-	mgSetPos(gameOverScore, centerX-30, centerY+100)
+	mgSetPos(gameOverScore, 470, 430)
 	
 	buttons = {}
 	for i=1,levelCount do
@@ -229,8 +250,9 @@ function load()
 	mgSetAlpha(glowLine, 0)
 	
 	optionsGfx = mgCreateImage("toggle_graphics.png")
-	mgSetPos(optionsGfx, centerX, centerY+15)
-	mgSetAlpha(optionsGfx, 0)
+	mgSetPos(optionsGfx, 0, 15)
+	
+	optionsSnd = mgCreateImage("toggle_sound.png")
 	
 	upgradeButton = mgCreateUi("upgradebutton.xml")
 	mgSetOrigo(upgradeButton, "topright")
@@ -309,7 +331,7 @@ function load()
 	
 	helpButton = mgCreateUi("helpbutton.xml")
 	mgSetOrigo(helpButton, "bottomright")
-	mgSetPos(helpButton, right-55, bottom-55)
+	mgSetPos(helpButton, right-357, bottom-55)
 	
 	statsCounter = 0
 end
@@ -506,10 +528,18 @@ function draw()
 
 	mgDraw(glowLine)
 	
-	mgDraw(gameOver)
-	mgSetScale(gameOverScore, mgGetScale(gameOver))
-	mgDraw(gameOverScore)
-	
+	local goa = mgGetAlpha(gameOverCanvas)
+	if goa > 0 then
+		mgFullScreenColor(0,0,0,goa*0.5)
+		mgPushCanvas(gameOverCanvas)
+		mgDraw(gameOver)
+		mgSetScale(gameOverScore, mgGetScale(gameOver))
+		mgDraw(gameOverScore)
+		mgDraw(gameOverRestart)
+		mgDraw(gameOverContinue)
+		mgDraw(gameOverContinueText)
+		mgPopCanvas()
+	end
 	
 	if glowT > 0 then
 		glowT = glowT-1
@@ -647,12 +677,11 @@ function drawWorld()
 		mgPopCanvas()
 	end
 	
-	local optAlpha = mgGetAlpha(optionsUi)
+	local optAlpha = mgGetAlpha(optionsCanvas)
 	if optAlpha > 0 then
 		mgFullScreenColor(0,0,0,optAlpha*0.5)
+		mgPushCanvas(optionsCanvas)
 		mgDraw(optionsUi)
-		mgSetScale(optionsGfx, mgGetScale(optionsUi))
-		mgSetAlpha(optionsGfx, mgGetAlpha(optionsUi))
 		local gfx = mgGet("game.graphics")
 		if gfx == "low" then
 			 mgSetCrop(optionsGfx, 0, 0, 512, 128)
@@ -663,7 +692,36 @@ function drawWorld()
 		end
 		mgSetOrigo(optionsGfx, "pixel", 256, -150)
 		mgDraw(optionsGfx)
-	end
+
+		local snd1 = mgGet("audio.musicEnabled")
+		if snd1 == "0" then
+			 mgSetCrop(optionsSnd, 0, 0, 110, 128)
+		elseif snd1 == "0.3" then 
+			mgSetCrop(optionsSnd, 0, 128, 110, 256)
+		elseif snd1 == "0.7" then
+			mgSetCrop(optionsSnd, 0, 256, 110, 384) 
+		else
+			mgSetCrop(optionsSnd, 0, 384, 110, 512) 
+		end
+		mgSetOrigo(optionsSnd, "center")
+		mgSetPos(optionsSnd, -135, -110)
+		mgDraw(optionsSnd)
+
+		local snd1 = mgGet("audio.soundEnabled")
+		if snd1 == "0" then
+			 mgSetCrop(optionsSnd, 0, 0, 110, 128)
+		elseif snd1 == "0.3" then 
+			mgSetCrop(optionsSnd, 0, 128, 110, 256)
+		elseif snd1 == "0.7" then
+			mgSetCrop(optionsSnd, 0, 256, 110, 384) 
+		else
+			mgSetCrop(optionsSnd, 0, 384, 110, 512) 
+		end
+		mgSetOrigo(optionsSnd, "center")
+		mgSetPos(optionsSnd, 225, -110)
+		mgDraw(optionsSnd)
+		mgPopCanvas()
+	end	
 	
 	if rate ~= -1 then
 		local rateAlpha = mgGetAlpha(rate)
@@ -724,9 +782,8 @@ end
 
 
 function showGameOver()
-	mgSetScale(gameOver, 1, 1, "linear", 0.1) 
-	mgSetScale(gameOverScore, 1, 1, "linear", 0.1) 
-	mgSetAlpha(gameOver, 1, "easeout") 
+	mgSetScale(gameOverCanvas, 1, 1, "linear", 0.1) 
+	mgSetAlpha(gameOverCanvas, 1, "easeout", 0.1) 
 	mgSetCanvasEnabled(levelCanvas, false)
 end
 
@@ -739,23 +796,13 @@ end
 function handleCommand(cmd)
 
 	if cmd == "showoptions" then
-		if (mgGet("audio.musicEnabled") == "1") then
-			mgRadioSelect(optionsUi, "m1") 
-		else
-			mgRadioSelect(optionsUi, "m0") 
-		end
-		if (mgGet("audio.soundEnabled") == "1") then
-			mgRadioSelect(optionsUi, "s1") 
-		else
-			mgRadioSelect(optionsUi, "s0") 
-		end	
 		mgSetUiModal(optionsUi, true)
 		mgSetCanvasEnabled(levelCanvas, false)
 		
-		mgSetAlpha(optionsUi, 0)
-		mgSetScale(optionsUi, 1.5, 1.2)
-		mgSetScale(optionsUi, 1, 1, "easeout", 0.15)
-		mgSetAlpha(optionsUi, 1, "easeout", 0.15)
+		mgSetAlpha(optionsCanvas, 0)
+		mgSetScale(optionsCanvas, 1.5, 1.2)
+		mgSetScale(optionsCanvas, 1, 1, "easeout", 0.15)
+		mgSetAlpha(optionsCanvas, 1, "easeout", 0.15)
 
 		mgSetScale(haloCircle, 1.5, 1.2)
 		mgSetScale(haloCircle, 1, 1, "easeout", 0.15)
@@ -770,8 +817,8 @@ function handleCommand(cmd)
 		mgSetUiModal(optionsUi, false)
 		mgSetCanvasEnabled(levelCanvas, true)
 		
-		mgSetScale(optionsUi, 0.2, 0.4, "easein", 0.15)
-		mgSetAlpha(optionsUi, 0, "easein", 0.15)
+		mgSetScale(optionsCanvas, 0.2, 0.4, "easein", 0.15)
+		mgSetAlpha(optionsCanvas, 0, "easein", 0.15)
 
 		mgSetAlpha(haloCircle, 0)
 		mgSetAlpha(haloCircle, 0, "easein", 0.1)
@@ -877,25 +924,45 @@ function handleCommand(cmd)
 		gameOverShown = true
 		local score = tonumber(mgGet("level.score"))
 		if score > currentHighscore then
-			mgSetCrop(gameOver, 0, 750, 750, 1500)
+			mgSetCrop(gameOver, 0, 860, 860, 1720)
 			if mgGet("player.rated") == "0" and score > 3000 and tonumber(mgGet("player.startcount")) >= 2 then
 				trigShowRate = true
 			end
 		else
-			mgSetCrop(gameOver, 0, 0, 750, 750)
+			mgSetCrop(gameOver, 0, 0, 860, 860)
+		end
+		if score < 1000 then
+			mgSetScale(gameOverRestart, 1, 1)
+			mgSetScale(gameOverContinue, 0, 0)
+			mgSetAlpha(gameOverContinueText, 0)
+		else
+			mgSetScale(gameOverRestart, 0, 0)
+			mgSetScale(gameOverContinue, 1, 1)
+			mgSetAlpha(gameOverContinueText, 1)
+			local cp = math.floor(score/1000)
+			if cp > 10 then cp = 10 end
+			continueLevel = cp
+			if cp == 10 then
+				mgSetText(gameOverContinueText, ";") -- endless
+			else
+				mgSetText(gameOverContinueText, cp)
+			end
+			mgSetOrigo(gameOverContinueText, "center")
 		end
 		mgSetOrigo(gameOver, "center")
 		mgSetText(gameOverScore, "=" .. mgGet("level.score"));
 		mgSetOrigo(gameOverScore, "center")
-		mgSetUiModal(gameOver, true)
+		mgSetUiModal(gameOverRestart, true)
+		mgSetUiModal(gameOverContinue, true)
 		mgRunDelayed("showGameOver()", 1.0)
 	end
 
 	if cmd == "hidegameover" then
 		gameOverShown = false
-		mgSetScale(gameOver, 0, 0, "easein", 0.15)
-		mgSetAlpha(gameOver, 0, "easein", 0.15)
-		mgSetUiModal(gameOver, false)
+		mgSetScale(gameOverCanvas, 0, 0, "easein", 0.15)
+		mgSetAlpha(gameOverCanvas, 0, "easein", 0.15)
+		mgSetUiModal(gameOverRestart, false)
+		mgSetUiModal(gameOverContinue, false)
 		mgSetCanvasEnabled(levelCanvas, true)
 		if trigShowRate then handleCommand("showrate") trigShowRate=false end
 	end
@@ -943,7 +1010,7 @@ function handleCommand(cmd)
 	end
 	
 	if cmd == "activate" then
-		mgSetPos(levelCanvas, distanceToCanvasPos(tonumber(mgGet("level.distance"))), 0)
+		--mgSetPos(levelCanvas, distanceToCanvasPos(tonumber(mgGet("level.distance"))), 0)
 		mgSetCanvasEnabled(levelCanvas, true)
 	end
 
@@ -1014,7 +1081,7 @@ function handleCommand(cmd)
 	end	
 	
 	if cmd == "back" then
-		if mgGetAlpha(optionsUi) > 0 then
+		if mgGetAlpha(optionsCanvas) > 0 then
 			handleCommand("hideoptions")
 		elseif mgGetAlpha(moreUi) > 0 then
 			handleCommand("hidemore")
@@ -1022,7 +1089,7 @@ function handleCommand(cmd)
 			handleCommand("hidescore")
 		elseif mgGetAlpha(upgradeCanvas) > 0 then
 			handleCommand("hideupgrade")
-		elseif mgGetAlpha(gameOver) > 0 then
+		elseif mgGetAlpha(gameOverCanvas) > 0 then
 			handleCommand("hidegameover")
 		elseif mgGetAlpha(playMenuCanvas) > 0 then
 			handleCommand("hideplaymenu")
@@ -1064,7 +1131,7 @@ function handleCommand(cmd)
 		rate = mgCreateUi("rate.xml")
 		mgSetOrigo(rate, "center")
 		mgSetPos(rate, centerX, centerY)
-		mgSetAlpha(rate, 0)
+		mgSetAlpha(rate, 0.01)
 		mgSetScale(rate, 1.5, 1.2)
 		mgSetScale(rate, 1, 1, "easeout", 0.15)
 		mgSetAlpha(rate, 1, "easeout", 0.15)
@@ -1086,6 +1153,18 @@ function handleCommand(cmd)
 	
 	if cmd == "load" then
 		load()
+	end
+	
+	if cmd == "gameover_restart" then
+		if rate == -1 or mgGetAlpha(rate) == 0 then
+			mgCommand("level.start 0")
+		end
+	end
+	
+	if cmd == "gameover_continue" then
+		if rate == -1 or mgGetAlpha(rate) == 0 then
+			mgCommand("level.start " .. continueLevel)
+		end
 	end
 end
 

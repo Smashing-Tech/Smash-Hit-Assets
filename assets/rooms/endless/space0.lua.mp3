@@ -45,12 +45,7 @@ function init()
 	confSegment("endless/space/powerups/16_3", 0.3)
 
 	l = 0
-	
-	if pEndless == 1 then
-		l = l + mgSegment("endless/space/start", -l)	
-	else
-		l = l + mgSegment("endless/space/fillers/16_0", -l)
-	end
+	l = l + mgSegment("endless/space/start", -l)	
 	
 	while l < pLength do
 		s = nextSegment()
