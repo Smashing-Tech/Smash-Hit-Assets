@@ -414,12 +414,12 @@ function load()
 	mgSetPos(newUi, left+50, bottom-170)
 	mgSetOrigo(newUi, "bottomleft")
 	mgSetScale(newUi, uiScale, uiScale)
-	if (mgGet("game.trymode") == "2" or tonumber(mgGet("player.startcount")) < 2) then
-		mgSetAlpha(newUi, 0)
-	else
-		mgSetUiModal(newUi, true)
-		mgSetCanvasEnabled(levelCanvas, false)
-	end
+	--if (mgGet("game.trymode") == "2" or tonumber(mgGet("player.startcount")) < 2) then
+	mgSetAlpha(newUi, 0)
+	--else
+	--	mgSetUiModal(newUi, true)
+	--	mgSetCanvasEnabled(levelCanvas, false)
+	--end
 	
 	statsCounter = 0
 end
@@ -731,6 +731,7 @@ function drawWorld()
 	mgSet("game.levelpos", x)
 
 	local wide = 4.0*(1.0-(bottom-top)/1536)
+	if wide > 1.0 then wide = 1.0 end
 	for i=1,levelCount do
 		x = (i-1)*680
 		dist = (i-1)*1000
@@ -738,7 +739,7 @@ function drawWorld()
 
 		bx,by = mgGetCheckpointPos(i-1)
 		bx = bx + 15
-		by = by - 50 - 75*wide
+		by = by - 50 - 40*wide
 		local buttonOffset = math.sin(mgScriptTime()*2+2*i)*5.0;
 		mgSetPos(buttons[i], bx, by + buttonOffset)
 
