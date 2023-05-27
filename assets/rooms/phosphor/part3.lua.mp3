@@ -20,7 +20,9 @@ function init()
 		l = l + mgSegment("phosphor/part3/start", -l)	
 	end
 	
-	len = 200
+	len = 180
+	if mgGet("player.mode")=="0" then len = 150 end
+	if mgGet("player.mode")=="2" then len = 200 end
 	
 	while l < len do
 		s = nextSegment()

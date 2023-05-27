@@ -21,12 +21,15 @@ function init()
 		l = l + mgSegment("city/path2/start", -l)	
 	end
 
-	while l < 130 do
+	local targetLen = 130 
+	if mgGet("player.mode")=="0" then targetLen = 100 end
+	if mgGet("player.mode")=="2" then targetLen = 150 end
+	while l < targetLen do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end
 
-	if pEnd then 
+	if pEnd and mgGet("player.mode")~="2" then 
 		l = l + mgSegment("city/path2/door", -l)	
 	end
 		

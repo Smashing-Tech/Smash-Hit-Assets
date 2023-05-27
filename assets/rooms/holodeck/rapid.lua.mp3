@@ -22,7 +22,10 @@ function init()
 		l = l + mgSegment("holodeck/rapid_start", -l)	
 	end
 	
-	while l < 250 do
+	local targetLen = 250 
+	if mgGet("player.mode")=="0" then targetLen = 200 end
+	if mgGet("player.mode")=="2" then targetLen = 320 end
+	while l < targetLen do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end

@@ -20,7 +20,10 @@ function init()
 		l = l + mgSegment("brownie/part3/start", -l)	
 	end
 	
-	while l < 100 do
+	local targetLen = 100 
+	if mgGet("player.mode")=="0" then targetLen = 80 end
+	if mgGet("player.mode")=="2" then targetLen = 100 end
+	while l < targetLen do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end

@@ -27,7 +27,10 @@ function init()
 	l = l + mgSegment("basic/darker/powerup", -l)	
 	
 
-	while l < 120 do
+	local targetLen = 120 
+	if mgGet("player.mode")=="0" then targetLen = 100 end
+	if mgGet("player.mode")=="2" then targetLen = 150 end
+	while l < targetLen do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end

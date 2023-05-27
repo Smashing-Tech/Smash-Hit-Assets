@@ -168,6 +168,13 @@
 	<template name="endless_glass">		<properties param0="color=.4 .55 .6" /></template>
 	<template name="endless_st">		<properties param0="color=0 .75 .9" /></template>
 
+
+	<!-- ZEN -->
+	<template name="zen_s"> 			<properties lightLeft="1" lightRight=".8" lightTop="1" lightBottom=".7" lightFront=".88" fogcolor="1.1 1.05 1 -.15 -.125 -.1" softshadow=".85" /></template>
+	<template name="zen"> 				<properties tile="27" color=".2 .3 .15" reflection="0"/></template>
+	<template name="zen_glass">			<properties param0="color=.2 .6 .7" /></template>
+	<template name="zeb_st">			<properties param0="color=0 .75 .9" /></template>
+
 	
 	<!-- CREDITS -->
 	<template name="credits"> 			<properties color=".1 .22 .25" tile="27" tileSize="1 1 1" reflection="1" /></template>

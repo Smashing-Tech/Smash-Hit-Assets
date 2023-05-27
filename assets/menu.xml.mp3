@@ -1,0 +1,7 @@
+<menu>
+	<item name="classic" upper="-1.4 -0.5 -0.7" lower="2.2 2 2.4" tint="1 1 1"/>
+	<item name="zen" upper="-.2 .2 .2" lower="1.5 1.5 1.1" tint=".6 .9 .55"/>
+	<item name="training" upper=".3 0 -.1" lower="1.5 1.5 1.1" tint=".75 .65 .45"/>
+	<item name="expert" upper=".4 -.6 .1" lower="1.2 1.1 .6" tint="1 .5 .6"/>
+</menu>
+

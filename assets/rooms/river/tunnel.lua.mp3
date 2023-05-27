@@ -18,7 +18,10 @@ function init()
 		l = l + mgSegment("river/tunnel/start", -l)	
 	end
 	
-	while l < 170 do
+	local len = 170
+	if mgGet("player.mode")=="0" then len = 140 end
+	if mgGet("player.mode")=="2" then len = 200 end
+	while l < len do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end

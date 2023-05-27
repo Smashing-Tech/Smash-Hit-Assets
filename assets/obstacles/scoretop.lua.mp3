@@ -8,7 +8,7 @@ function init()
 	
 	local yPos = 0
 	if ray then
-		local tmp,x,y,z = mgRaycast(0,0,0,0,-10,0)
+		local tmp,x,y,z = mgRaycast(0,0,0,0,-15,0)
 		yPos = y + 0.02
 	end
 

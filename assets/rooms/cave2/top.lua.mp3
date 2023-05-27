@@ -31,6 +31,8 @@ function init()
 	
 	len = 250
 	if pDifferent then len = 140 end
+	if mgGet("player.mode")=="0" then len = len * 0.8 end
+	if mgGet("player.mode")=="2" then len = len * 1.1 end
 	
 	while l < len do
 		s = nextSegment()

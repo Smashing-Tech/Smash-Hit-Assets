@@ -62,5 +62,8 @@ function tick()
 			end
 		end
 	end
+	if cyl and mgGetShapeBody(cyl)~=body then
+		mgSetShapeMask(cyl, 255, 32)
+	end
 end
 

@@ -28,7 +28,10 @@ function init()
 
 	l = l + mgSegment("hyperspace/warp/32_3", -l)
 
-	while l < 450 do
+	local targetLen = 450 
+	if mgGet("player.mode")=="0" then targetLen = 300 end
+	if mgGet("player.mode")=="2" then targetLen = 500 end
+	while l < targetLen do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end

@@ -18,7 +18,10 @@ function init()
 		l = l + mgSegment("canyon/cave/start", -l)	
 	end
 	
-	while l < 180 do
+	local targetLen = 180
+	if mgGet("player.mode")=="0" then targetLen = 130 end
+	if mgGet("player.mode")=="2" then targetLen = 220 end
+	while l < targetLen do
 		s = nextSegment()
 		l = l + mgSegment(s, -l)	
 	end

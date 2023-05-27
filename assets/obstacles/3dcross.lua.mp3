@@ -26,16 +26,22 @@ function init()
 
 	mgShapeChamfer(0.03)
 	mgMaterial("steel")
-	mgCreateBox(b, r, r, r, -w-r)
-	mgCreateBox(b, r, r, r, w+r)
-	mgCreateBox(b, r, r, r, 0, -w-r)
-	mgCreateBox(b, r, r, r, 0, w+r)
-	mgCreateBox(b, r, r, r, 0, 0, -w-r)
-	mgCreateBox(b, r, r, r, 0, 0, w+r)
+	box = {}
+	box[1] = mgCreateBox(b, r, r, r, -w-r)
+	box[2] = mgCreateBox(b, r, r, r, w+r)
+	box[3] = mgCreateBox(b, r, r, r, 0, -w-r)
+	box[4] = mgCreateBox(b, r, r, r, 0, w+r)
+	box[5] = mgCreateBox(b, r, r, r, 0, 0, -w-r)
+	box[6] = mgCreateBox(b, r, r, r, 0, 0, w+r)
 
 	mgCreateBallJoint(0, b, 0, 0, 0)
 end
 
 function tick()
 	mgSetAngVel(b, vx, vy, vz)
+	for i=1,6 do
+		if mgGetShapeBody(box[i]) ~= b then
+			mgSetShapeMask(box[i], 255, 32)
+		end
+	end
 end

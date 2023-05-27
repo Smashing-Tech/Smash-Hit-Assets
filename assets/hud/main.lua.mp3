@@ -206,6 +206,9 @@ function init()
 	mgSetOrigo(hintImg, "bottomleft")
 	mgSetPos(hintImg, left, bottom)
 	mgSetAlpha(hintImg, 0)
+	
+	zen = (mgGet("player.mode") == "3")
+	expert = (mgGet("player.mode") == "2")
 end
 
 function pushPowerup()
@@ -317,16 +320,18 @@ function frame()
 	lastMultiplier = multiplier
 	
 	ballCount = tonumber(mgGet("level.ballcount"))
-	if distance > 11980 and distance < 12000 and not hintDone then
-		hintDone = mgCreateImage("endless_mode.png")
-		mgSetOrigo(hintDone, "center")
-		mgSetPos(hintDone, centerX, centerY)
-		mgSetAlpha(hintDone, 0)
-		mgSetAlpha(hintDone, 1, "linear", 0.5)
-		mgRunDelayed('mgSetAlpha(hintDone, 0, "linear", 0.5)', 3.0)
+	if not zen then
+		if distance > 11980 and distance < 12000 and not hintDone then
+			hintDone = mgCreateImage("endless_mode.png")
+			mgSetOrigo(hintDone, "center")
+			mgSetPos(hintDone, centerX, centerY)
+			mgSetAlpha(hintDone, 0)
+			mgSetAlpha(hintDone, 1, "linear", 0.5)
+			mgRunDelayed('mgSetAlpha(hintDone, 0, "linear", 0.5)', 3.0)
+		end
 	end
 	
-	if not credits then
+	if not credits and not zen and not expert then
 		if distance > 5 and distance < 30 and not hint1shown then
 			hint1shown = true
 			hintTimer = 180
@@ -421,27 +426,29 @@ function draw()
 	mgSetPos(scoreText, scoreX, top+40, "linear")
 
 	if not credits then
-		if mgGetPowerupFraction("ballfrenzy") > 0 then
-			mgSetPos(hintFrenzyScore, centerX+70, 110)
-			mgDraw(hintFrenzyScore)
-		else
-			mgDraw(scoreText)
-		end
-		streakFrac = ((streak%10))/10
-		mgSetPos(streakBg, multX, multY) 
-		mgSetAlpha(streakBg, t)
-		mgDraw(streakBg)
-		if streak < 40 then
-			mgSetPos(streakPie, multX, multY) 
-			mgSetAlpha(streakPie, t)
-			mgDrawPie(streakPie, streakFrac)
-		end
+		if not zen then
+			if mgGetPowerupFraction("ballfrenzy") > 0 then
+				mgSetPos(hintFrenzyScore, centerX+70, 110)
+				mgDraw(hintFrenzyScore)
+			else
+				mgDraw(scoreText)
+			end
+			streakFrac = ((streak%10))/10
+			mgSetPos(streakBg, multX, multY) 
+			mgSetAlpha(streakBg, t)
+			mgDraw(streakBg)
+			if streak < 40 then
+				mgSetPos(streakPie, multX, multY) 
+				mgSetAlpha(streakPie, t)
+				mgDrawPie(streakPie, streakFrac)
+			end
 
-		mgSetCrop(streakBalls, 210*(multiplier-1), 0, 210*multiplier, 210)
-		mgSetOrigo(streakBalls, "center")
-		mgSetPos(streakBalls, multX, multY)
-		mgSetAlpha(streakBalls, t)
-		mgDraw(streakBalls)
+			mgSetCrop(streakBalls, 210*(multiplier-1), 0, 210*multiplier, 210)
+			mgSetOrigo(streakBalls, "center")
+			mgSetPos(streakBalls, multX, multY)
+			mgSetAlpha(streakBalls, t)
+			mgDraw(streakBalls)
+		end
 	else
 		if creditsLogo then
 			mgSetAlpha(creditsLogo, t)
@@ -519,54 +526,59 @@ function draw()
 		mgDraw(puStack[i])
 	end
 	mgDraw(pu)
-	mgDraw(hintImg)
 
-	mgDraw(countdown)
-	
-	mgDraw(pickupText)
 	mgDraw(checkpoint)
 	mgDraw(checkpointText)
 	mgDraw(checkpointSaved)
-	
-	if hint then
-		local a = mgGetAlpha(hint)
-		if a > 0 then
-			mgDraw(hint)
-			if a == 1 and mgIsTouched(centerX, centerY, 2000) then
-				mgSetAlpha(hint, 0, "linear", 0.4)
-				mgSet("game.paused", 0)
-			end
-		end
+	mgDraw(countdown)
+
+	if not zen then
+		mgDraw(pickupText)
 	end
 
-	if hintArrow then
-		local a = mgGetAlpha(hintArrow)
-		if a > 0 then
-			local x,y = mgGetPos(pu)
-			local offset = math.sin(mgScriptTime()*7)*50 + 200
-			mgSetPos(hintArrow, x, y-offset)
-			mgDraw(hintArrow)
-		end
-	end
-	if hintFrenzy then
-		local a = mgGetAlpha(hintFrenzy)
-		if a > 0 then
-			mgDraw(hintFrenzy)
-			local x,y = mgGetPos(hintFrenzyHandGuide)
-			mgSetPos(hintFrenzyHand, x, y+70*math.sin(x*0.007+4.5) - 10)
-			mgDraw(hintFrenzyHand)
-			for i=1, 5 do
-				local px = centerX-400+i*130
-				if x > px+100 then
-					mgSetPos(hintFrenzyBall, px, y-110 + 70*math.sin(px*0.007+5.5) - 10)
-					mgDraw(hintFrenzyBall)
+	if not zen and not expert then
+		mgDraw(hintImg)
+		
+		if hint then
+			local a = mgGetAlpha(hint)
+			if a > 0 then
+				mgDraw(hint)
+				if a == 1 and mgIsTouched(centerX, centerY, 2000) then
+					mgSetAlpha(hint, 0, "linear", 0.4)
+					mgSet("game.paused", 0)
 				end
 			end
-			if a == 1 and mgIsTouched(centerX, centerY, 2000) then
-				mgSet("game.paused", 0)
-				mgSetAlpha(hintFrenzy, 0, "linear", 0.4)
-				mgSetAlpha(hintFrenzyHand, 0, "linear", 0.4)
-				mgSetAlpha(hintFrenzyBall, 0, "linear", 0.4)
+		end
+
+		if hintArrow then
+			local a = mgGetAlpha(hintArrow)
+			if a > 0 then
+				local x,y = mgGetPos(pu)
+				local offset = math.sin(mgScriptTime()*7)*50 + 200
+				mgSetPos(hintArrow, x, y-offset)
+				mgDraw(hintArrow)
+			end
+		end
+		if hintFrenzy then
+			local a = mgGetAlpha(hintFrenzy)
+			if a > 0 then
+				mgDraw(hintFrenzy)
+				local x,y = mgGetPos(hintFrenzyHandGuide)
+				mgSetPos(hintFrenzyHand, x, y+70*math.sin(x*0.007+4.5) - 10)
+				mgDraw(hintFrenzyHand)
+				for i=1, 5 do
+					local px = centerX-400+i*130
+					if x > px+100 then
+						mgSetPos(hintFrenzyBall, px, y-110 + 70*math.sin(px*0.007+5.5) - 10)
+						mgDraw(hintFrenzyBall)
+					end
+				end
+				if a == 1 and mgIsTouched(centerX, centerY, 2000) then
+					mgSet("game.paused", 0)
+					mgSetAlpha(hintFrenzy, 0, "linear", 0.4)
+					mgSetAlpha(hintFrenzyHand, 0, "linear", 0.4)
+					mgSetAlpha(hintFrenzyBall, 0, "linear", 0.4)
+				end
 			end
 		end
 	end
@@ -701,7 +713,7 @@ function handleCommand(cmd)
 		popPowerup()			
 	end
 
-	if cmd == "hintfrenzy" then
+	if cmd == "hintfrenzy" and not zen and not expert then
 		hintFrenzy = mgCreateImage("hint_swipe.png")
 		mgSetOrigo(hintFrenzy, "center")
 		mgSetPos(hintFrenzy, centerX, centerY)

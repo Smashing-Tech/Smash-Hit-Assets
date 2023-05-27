@@ -5,4 +5,5 @@
 	<room type="holodeck/rapid" length="200" start="true" end="false"/>
 	<room type="holodeck/rapid" length="200" start="false" end="true"/>
 	<room type="holodeck/bonus" length="100" start="true" end="true"/>
+	<room type="holodeck/boss" length="100"/>
 </level>
