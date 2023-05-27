@@ -1,7 +1,7 @@
 Signature-Version: 1.0
 SHA1-Digest-Manifest-Main-Attributes: 0PQEYzOnB1nd3VZLxj4XA/AxiZ4=
 Created-By: 1.7.0_51 (Oracle Corporation)
-SHA1-Digest-Manifest: zSD1tpz9jc66acV+mYRxjwMFhgk=
+SHA1-Digest-Manifest: U+ouaWp4ITjcfw8mR+VTiR80Gpk=
 
 Name: assets/snd/breakable/glass_m1.ogg.mp3
 SHA1-Digest: i7ye3rSPVhFQx+hfGSlhXLf7v4s=
@@ -1567,6 +1567,9 @@ SHA1-Digest: VRDgYwvpClMCSaO2jwMCldzdGtY=
 Name: assets/snd/object/slideloop.ogg.mp3
 SHA1-Digest: +opQuNiMW0iQAgbxRR9fg03gx+Q=
 
+Name: lib/x86/libsmashhit.so
+SHA1-Digest: KPMbpq7Ou8LTuDrTv8+Vigl95ac=
+
 Name: assets/segments/holodeck/rapid0.mesh.mp3
 SHA1-Digest: 9LiUUkLGp78BV4Tyth5xk9n2tQ4=
 
@@ -2022,7 +2025,7 @@ Name: assets/segments/river/tunnel/start.xml.gz.mp3
 SHA1-Digest: XRfP97jrMj/G026AI9BxBQAQGc8=
 
 Name: AndroidManifest.xml
-SHA1-Digest: PIaOEWmbphjhquh/3FYOxgsZdnk=
+SHA1-Digest: uCTXj3+XK5Cao5/AG6Lm1m8kVys=
 
 Name: assets/segments/credits/start.mesh.mp3
 SHA1-Digest: o7d0HgA4xxShgCNmqmHIBAyd6/g=
@@ -2308,14 +2311,14 @@ SHA1-Digest: JaPeElY7oKKDR+9yr6dziSlgGKI=
 Name: assets/segments/endless/narrow/scores/16_scoretops_x6.mesh.mp3
 SHA1-Digest: 3NfChl0abkyYuSb0mDSesDr7XCM=
 
-Name: assets/hud/localize_es/pausemenu.png.mtx.mp3
-SHA1-Digest: PeSvTYSsPzWhWB27tRepUnU/Hro=
-
 Name: assets/obstacles/doors/double.lua.mp3
 SHA1-Digest: V9geDU+E6MNVleCTka7swA2ilTo=
 
+Name: assets/hud/localize_es/pausemenu.png.mtx.mp3
+SHA1-Digest: PeSvTYSsPzWhWB27tRepUnU/Hro=
+
 Name: assets/sig.mp3
-SHA1-Digest: V5znE//aU65I8jWv+xGOq0HFZYs=
+SHA1-Digest: /gs9L+dM/zIEJniVSbn19T9fJ3k=
 
 Name: assets/menu/loading_dot.png.mtx.mp3
 SHA1-Digest: Tua2ohvrhaT64DvFZvRm5NsCnjk=
@@ -6001,7 +6004,7 @@ Name: assets/menu/upgrade_statistics.png.mtx.mp3
 SHA1-Digest: 7VOKDWk6pUwWYZZiDFRYCRZb6g0=
 
 Name: lib/armeabi-v7a/libsmashhit.so
-SHA1-Digest: IHtYGlFFp/09K/bDGsiepZeFQVA=
+SHA1-Digest: lGSCpxSC1IyGfYF6ltzkfBuzrTQ=
 
 Name: assets/segments/night/part3/door.xml.gz.mp3
 SHA1-Digest: mI38LdFb+Ap31Nn0uIsbQsIWVbo=
