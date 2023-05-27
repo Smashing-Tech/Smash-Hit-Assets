@@ -16,6 +16,14 @@
 	<template name="menu_block"> 		<properties color=".15 .29 .33  .2 .4 .45  .15 .29 .33" tile="32 0 32" tileSize="4 12 4" tileRot="2 0 2" /></template>
 	<template name="menu_s"> 			<properties lightLeft=".7" lightRight=".9" lightTop="1" lightBottom=".85" lightFront="1" lightBack=".75" fogcolor="1.75 1.6 1.95 .07 .45 0" softshadow=".7" /></template>
 
+	
+	<!-- VS / CO-OP -->
+	<template name="split">		 		<properties tile="55" color=".2 .2 .2" reflection="1"/></template>
+	<template name="split_s"> 			<properties lightLeft="1" lightRight=".8" lightTop=".4" lightBottom=".5" lightFront=".9" fogcolor="1.3 1.1 1.4 -.1 .1 .2" softshadow=".75" /></template>
+	<template name="split_st"> 			<properties param0="color=0 .5 1" /></template>
+	<template name="split_glass">		<properties param0="color=.3 .5 .6" /></template>
+	<template name="split_menu">		<properties tile="19" color=".4 .4 .4" tileSize="2" /></template>
+	
 
 	<!-- BASIC -->
 	<template name="basic_s"> 			<properties lightLeft="1" lightRight=".8" lightTop="1" lightBottom=".7" lightFront=".88" fogcolor="1.75 1.6 1.95 .07 .45 0" softshadow=".7" /></template>

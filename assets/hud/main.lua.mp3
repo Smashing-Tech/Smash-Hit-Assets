@@ -1,3 +1,11 @@
+MODE_TRAINING = 0
+MODE_CLASSIC = 1
+MODE_EXPERT = 2
+MODE_ZEN = 3
+MODE_VERSUS = 4
+MODE_COOP = 5
+MODE_COUNT = 6
+
 function startsWith(str,start)
    return string.sub(str,1,string.len(start))==start
 end
@@ -36,11 +44,18 @@ end
 
 function init()
 	initGlobals()
+
+	uiScale = tonumber(mgGet("game.uiscale"))
 	
 	pauseUi = mgCreateUi("pause.xml")
-	mgSetOrigo(pauseUi, "topright")
-	mgSetScale(pauseUI, 1, 1)
-	mgSetPos(pauseUi, right-46, top+46)
+	mgSetOrigo(pauseUi, "center")
+	mgSetScale(pauseUi, 1, 1)
+	mgSetPos(pauseUi, right-100, top+100)
+
+	pauseRotUi = mgCreateUi("pause_rot.xml")
+	mgSetOrigo(pauseRotUi, "center")
+	mgSetScale(pauseRotUi, 1, 1)
+	mgSetPos(pauseRotUi, centerX, top+100)
 	
 	backUi = mgCreateUi("back.xml")
 	mgSetOrigo(backUi, "topleft")
@@ -122,10 +137,6 @@ function init()
 	progressImg = mgCreateImage("progress.png")
 	mgSetPos(progressImg, left, top);
 	
-	currentMult = 1
-	multInc = mgCreateSound("snd/multiplier_increase.ogg")
-	multReset = mgCreateSound("snd/multiplier_reset.ogg")
-	
 	upgradeUi = mgCreateUi("upgrade.xml")
 	mgSetOrigo(upgradeUi, "center")
 	mgSetPos(upgradeUi, centerX, centerY)
@@ -136,7 +147,6 @@ function init()
 	mgSetPos(saleHud, centerX+410, centerY+50)
 	mgSetOrigo(saleHud, "center")
 
-	clearedMode = false
 	clearedFrame = 0
 	clearedBonus = 0
 	clearedBonusDone = false
@@ -213,6 +223,12 @@ function init()
 	
 	zen = (mgGet("player.mode") == "3")
 	expert = (mgGet("player.mode") == "2")
+	
+	scoreCanvas = mgCreateCanvas(2058,1536)
+	
+	winner = mgCreateUi("winner.xml")
+	mgSetOrigo(winner, "center")
+	mgSetAlpha(winner, 0)
 end
 
 function pushPowerup()
@@ -314,6 +330,7 @@ function frame()
 
 	local distance = tonumber(mgGet("level.distance"))
 
+	mode = tonumber(mgGet("player.mode"))
 	streak = tonumber(mgGet("level.streak"))
 	multiplier = math.floor(streak/10)+1
 	if multiplier > 5 then multiplier = 5 end
@@ -324,7 +341,7 @@ function frame()
 	lastMultiplier = multiplier
 	
 	ballCount = tonumber(mgGet("level.ballcount"))
-	if not zen then
+	if not zen and mode ~= MODE_COOP and mode ~= MODE_VERSUS then
 		if distance > 11980 and distance < 12000 and not hintDone then
 			hintDone = mgCreateImage("endless_mode.png")
 			mgSetOrigo(hintDone, "center")
@@ -372,6 +389,36 @@ function frame()
 	end
 end
 
+
+function drawScore(ballCount, streak)
+	if mgGetPowerupFraction("ballfrenzy") > 0 then
+		mgSetPos(hintFrenzyScore, 0, 0)
+		mgDraw(hintFrenzyScore)
+	else
+		mgSetPos(scoreText, 110, -60)
+		mgSetText(scoreText, ballCount) 
+		mgDraw(scoreText)
+	end
+
+	local streakFrac = ((streak%10))/10
+	mgSetPos(streakBg, 0, 0) 
+	mgDraw(streakBg)
+
+	if streak < 40 then
+		mgSetPos(streakPie, 0, 0) 
+		mgDrawPie(streakPie, streakFrac)
+	end
+
+	local multiplier = math.floor(streak/10)+1
+	if multiplier > 5 then multiplier = 5 end
+
+	mgSetCrop(streakBalls, 210*(multiplier-1), 0, 210*multiplier, 210)
+	mgSetOrigo(streakBalls, "center")
+	mgSetPos(streakBalls, 0, 0)
+	mgDraw(streakBalls)
+end
+
+
 function draw()
 --if asdasdasd==nil then return end
 
@@ -382,16 +429,6 @@ function draw()
 	if t < 0 then t = 0 end
 	if t > 1 then t = 1 end
 
-	if not clearedMode and frameCounter > 10 then
-		if multiplier > currentMult then
-			mgPlaySound(multInc)
-		elseif multiplier < currentMult then
-			if tonumber(mgGet("level.distance")) > 10 then
-				mgPlaySound(multReset)
-			end
-		end
-	end
-	currentMult = multiplier
 	xColor = { mgGetMultiplierColor(multiplier) }
 
 	--Distance progress bar
@@ -403,26 +440,21 @@ function draw()
 		mgSetAlpha(backUi, t)
 		mgDraw(backUi)
 	else
-		mgSetAlpha(pauseUi, t)
-		mgDraw(pauseUi)
+		if mode == MODE_VERSUS or mode == MODE_COOP then
+			mgSetAlpha(pauseRotUi, t)
+			mgDraw(pauseRotUi)
+		else
+			mgSetAlpha(pauseUi, t)
+			mgDraw(pauseUi)
+		end
 	end
 
 	local totalCount = 0
 
-	local sx, sy = mgGetScale(pauseMenuUi)
-	if sx > 0 then
-		mgFullScreenColor(0,0,0,sx*0.4)
-		mgDraw(pauseMenuUi)
-	end
-
-	local sx, sy = mgGetScale(resumeUi)
-	if sx > 0 then
-		mgFullScreenColor(0,0,0,sx*0.4)
-		mgDraw(resumeUi)
-	end
-	
 	mgSetAlpha(scoreText, t)
-	mgSetText(scoreText, ballCount)
+	mgSetAlpha(streakBg, t)
+	mgSetAlpha(streakPie, t)
+	mgSetAlpha(streakBalls, t)
 
 	local scoreX = centerX;
 	local multX = scoreX-90;
@@ -431,27 +463,70 @@ function draw()
 
 	if not credits then
 		if not zen then
-			if mgGetPowerupFraction("ballfrenzy") > 0 then
-				mgSetPos(hintFrenzyScore, centerX+70, 110)
-				mgDraw(hintFrenzyScore)
-			else
+			if mode == MODE_VERSUS then
+				mgSetPos(scoreCanvas, centerX-100, centerY)
+				mgSetRot(scoreCanvas, -math.pi/2)
+				mgPushCanvas(scoreCanvas)
+				drawScore(tonumber(mgGet("level.ballcount0")), tonumber(mgGet("level.streak0")))
+				mgPopCanvas()
+				
+				mgSetPos(scoreCanvas, centerX+100, centerY)
+				mgSetRot(scoreCanvas, math.pi/2)
+				mgPushCanvas(scoreCanvas)
+				drawScore(tonumber(mgGet("level.ballcount1")), tonumber(mgGet("level.streak1")))
+				mgPopCanvas()
+			elseif mode == MODE_COOP then
+				mgSetPos(scoreCanvas, centerX, centerY)
+				mgSetRot(scoreCanvas, -math.pi/2)
+				mgPushCanvas(scoreCanvas)
+				
+				mgSetPos(scoreText, 15, -140)
+				mgSetRot(scoreText, math.pi)
+				mgSetText(scoreText, ballCount) 
+				mgSetOrigo(scoreText, "center")
+				mgSetScale(scoreText, 0.75)
 				mgDraw(scoreText)
-			end
-			streakFrac = ((streak%10))/10
-			mgSetPos(streakBg, multX, multY) 
-			mgSetAlpha(streakBg, t)
-			mgDraw(streakBg)
-			if streak < 40 then
-				mgSetPos(streakPie, multX, multY) 
-				mgSetAlpha(streakPie, t)
-				mgDrawPie(streakPie, streakFrac)
-			end
 
-			mgSetCrop(streakBalls, 210*(multiplier-1), 0, 210*multiplier, 210)
-			mgSetOrigo(streakBalls, "center")
-			mgSetPos(streakBalls, multX, multY)
-			mgSetAlpha(streakBalls, t)
-			mgDraw(streakBalls)
+				mgSetPos(scoreText, -15, 140)
+				mgSetRot(scoreText, 0)
+				mgDraw(scoreText)
+
+				local streak0 = tonumber(mgGet("level.streak0"))
+				local streak1 = tonumber(mgGet("level.streak1"))
+				local streakFrac0 = streak0/10.0
+				local streakFrac1 = streak1/10.0
+				mgSetPos(streakBg, 0, 0) 
+				mgDraw(streakBg)
+
+				if streak < 40 then
+					mgSetPos(streakPie, 0, 0)
+					mgSetRot(streakPie, math.pi*1.5)
+					mgDrawPie(streakPie, streakFrac0)
+					mgSetRot(streakPie, math.pi*0.5)
+					mgDrawPie(streakPie, streakFrac1)
+				end
+
+				local multiplier = math.floor(streak/10)+1
+				if multiplier > 5 then multiplier = 5 end
+
+				mgSetCrop(streakBalls, 210*(multiplier-1), 0, 210*multiplier, 210)
+				mgSetOrigo(streakBalls, "center")
+				mgSetPos(streakBalls, 0, 0)
+				mgDraw(streakBalls)
+				
+				mgPopCanvas()
+				
+				--mgSetPos(scoreCanvas, centerX+100, centerY)
+			--	mgSetRot(scoreCanvas, math.pi/2)
+			--	mgPushCanvas(scoreCanvas)
+			--	drawScore(ballCount, streak)
+			--	mgPopCanvas()
+			else
+				mgSetPos(scoreCanvas, multX, multY)
+				mgPushCanvas(scoreCanvas)
+				drawScore(ballCount, streak)
+				mgPopCanvas()
+			end
 		end
 	else
 		if creditsLogo then
@@ -479,6 +554,19 @@ function draw()
 			end
 		end
 	end
+	
+	local sx, sy = mgGetScale(pauseMenuUi)
+	if sx > 0 then
+		mgFullScreenColor(0,0,0,sx*0.4)
+		mgDraw(pauseMenuUi)
+	end
+
+	local sx, sy = mgGetScale(resumeUi)
+	if sx > 0 then
+		mgFullScreenColor(0,0,0,sx*0.4)
+		mgDraw(resumeUi)
+	end
+	
 	
 	local showBorder = false
 	local borderColor = {1,1,1,1}
@@ -536,55 +624,56 @@ function draw()
 	mgDraw(checkpointSaved)
 	mgDraw(countdown)
 
-	if not zen then
+	if mode ~= MODE_ZEN and mode ~= MODE_COOP and mode ~= MODE_VERSUS then
 		mgDraw(pickupText)
-	end
 
-	if not zen and not expert then
-		mgDraw(hintImg)
+		if not zen and not expert then
+			mgDraw(hintImg)
 		
-		if hint then
-			local a = mgGetAlpha(hint)
-			if a > 0 then
-				mgDraw(hint)
-				if a == 1 and mgIsTouched(centerX, centerY, 2000) then
-					mgSetAlpha(hint, 0, "linear", 0.4)
-					mgSet("game.paused", 0)
-				end
-			end
-		end
-
-		if hintArrow then
-			local a = mgGetAlpha(hintArrow)
-			if a > 0 then
-				local x,y = mgGetPos(pu)
-				local offset = math.sin(mgScriptTime()*7)*50 + 200
-				mgSetPos(hintArrow, x, y-offset)
-				mgDraw(hintArrow)
-			end
-		end
-		if hintFrenzy then
-			local a = mgGetAlpha(hintFrenzy)
-			if a > 0 then
-				mgDraw(hintFrenzy)
-				local x,y = mgGetPos(hintFrenzyHandGuide)
-				mgSetPos(hintFrenzyHand, x, y+70*math.sin(x*0.007+4.5) - 10)
-				mgDraw(hintFrenzyHand)
-				for i=1, 5 do
-					local px = centerX-400+i*130
-					if x > px+100 then
-						mgSetPos(hintFrenzyBall, px, y-110 + 70*math.sin(px*0.007+5.5) - 10)
-						mgDraw(hintFrenzyBall)
+			if hint then
+				local a = mgGetAlpha(hint)
+				if a > 0 then
+					mgDraw(hint)
+					if a == 1 and mgIsTouched(centerX, centerY, 2000) then
+						mgSetAlpha(hint, 0, "linear", 0.4)
+						mgSet("game.paused", 0)
 					end
 				end
-				if a == 1 and mgIsTouched(centerX, centerY, 2000) then
-					mgSet("game.paused", 0)
-					mgSetAlpha(hintFrenzy, 0, "linear", 0.4)
-					mgSetAlpha(hintFrenzyHand, 0, "linear", 0.4)
-					mgSetAlpha(hintFrenzyBall, 0, "linear", 0.4)
+			end
+
+			if hintArrow then
+				local a = mgGetAlpha(hintArrow)
+				if a > 0 then
+					local x,y = mgGetPos(pu)
+					local offset = math.sin(mgScriptTime()*7)*50 + 200
+					mgSetPos(hintArrow, x, y-offset)
+					mgDraw(hintArrow)
+				end
+			end
+			if hintFrenzy then
+				local a = mgGetAlpha(hintFrenzy)
+				if a > 0 then
+					mgDraw(hintFrenzy)
+					local x,y = mgGetPos(hintFrenzyHandGuide)
+					mgSetPos(hintFrenzyHand, x, y+70*math.sin(x*0.007+4.5) - 10)
+					mgDraw(hintFrenzyHand)
+					for i=1, 5 do
+						local px = centerX-400+i*130
+						if x > px+100 then
+							mgSetPos(hintFrenzyBall, px, y-110 + 70*math.sin(px*0.007+5.5) - 10)
+							mgDraw(hintFrenzyBall)
+						end
+					end
+					if a == 1 and mgIsTouched(centerX, centerY, 2000) then
+						mgSet("game.paused", 0)
+						mgSetAlpha(hintFrenzy, 0, "linear", 0.4)
+						mgSetAlpha(hintFrenzyHand, 0, "linear", 0.4)
+						mgSetAlpha(hintFrenzyBall, 0, "linear", 0.4)
+					end
 				end
 			end
 		end
+
 	end
 
 	sx, sy = mgGetScale(upgradeUi)
@@ -607,10 +696,18 @@ function draw()
 		mgDraw(hintDone)
 	end
 	
+	if mode == MODE_VERSUS and mgGetAlpha(winner) > 0 then
+		mgDraw(winner)
+	end
+	
 	if showBorder then
-		mgSetColor(border, borderColor[1], borderColor[2], borderColor[3])
-		mgSetAlpha(border, borderColor[4])
-		mgDrawBorder(border)
+		if mode == MODE_VERSUS then
+			mgFullScreenColor(borderColor[1], borderColor[2], borderColor[3], borderColor[4], true)
+		else
+			mgSetColor(border, borderColor[1], borderColor[2], borderColor[3])
+			mgSetAlpha(border, borderColor[4])
+			mgDrawBorder(border)
+		end
 	end
 end
 
@@ -648,7 +745,7 @@ function handleCommand(cmd)
 	end
 
 	if cmd == "showpausemenu" then
-		mgSetScale(pauseMenuUi, 1, 1, "easeout", 0.15)
+		mgSetScale(pauseMenuUi, uiScale, uiScale, "easeout", 0.15)
 		mgSetAlpha(pauseMenuUi, 1, "easeout", 0.15)
 		mgSet("game.paused", "1")
 		mgSetUiModal(pauseMenuUi, true)
@@ -663,6 +760,30 @@ function handleCommand(cmd)
 
 	if getFirst(cmd) == "notify" then
 		notify(getSecond(cmd))
+	end
+
+	if cmd == "showwinner" then
+		mgSetUiModal(winner, true)
+		mgSetAlpha(winner, 1, "linear", 0.3)
+		mgSetScale(winner, 2, 2)
+		mgSetScale(winner, 1, 1, "easeout", 0.3)
+		if tonumber(mgGet("level.ballcount0")) < tonumber(mgGet("level.ballcount1")) then
+			mgSetRot(winner, math.pi/2)
+			mgSetPos(winner, centerX+500, centerY)
+		elseif tonumber(mgGet("level.ballcount0")) > tonumber(mgGet("level.ballcount1")) then
+			mgSetRot(winner, -math.pi/2)
+			mgSetPos(winner, centerX-500, centerY)
+		else
+			mgSetAlpha(winner, 0.001)
+			mgSetRot(winner, 0)
+			mgSetPos(winner, centerX, centerY)
+		end
+	end
+	
+	if cmd == "hidewinner" then
+		mgSetUiModal(winner, false)
+		mgSetAlpha(winner, 0.5, "linear", 0.3)
+		mgSetScale(winner, 0, "easeout", 0.3)
 	end
 
 	if cmd == "resume" then
@@ -692,8 +813,20 @@ function handleCommand(cmd)
 		mgSetOrigo(pickupText, "center")
 		mgSetScale(pickupText, 0, 0)
 		mgSetScale(pickupText, 0.9, 0.9, "easeout", 0.2)
-		mgSetPos(pickupText, centerX+180, top+100)
-		mgSetPos(pickupText, centerX+250, top+100, "linear", 0.8)
+		if mode == MODE_VERSUS then
+			if tonumber(mgGet("level.lastpickup")) == 0 then
+				mgSetRot(pickupText, -math.pi/2)
+				mgSetPos(pickupText, centerX-100, centerY+300)
+				mgSetPos(pickupText, centerX-100, centerY+500, "linear", 0.8)
+			else
+				mgSetRot(pickupText, math.pi/2)
+				mgSetPos(pickupText, centerX+100, centerY-300)
+				mgSetPos(pickupText, centerX+100, centerY-500, "linear", 0.8)
+			end
+		else
+			mgSetPos(pickupText, centerX+180, top+100)
+			mgSetPos(pickupText, centerX+250, top+100, "linear", 0.8)
+		end
 		mgSetAlpha(pickupText, 1)
 		mgSetAlpha(pickupText, 0, "easein", 0.8)
 	end
@@ -793,7 +926,7 @@ end
 
 function showupgrade()
 	handleCommand("hidepausemenu")
-	mgSetScale(upgradeUi, 1, 1, "cosine", 0.3)
+	mgSetScale(upgradeUi, uiScale, uiScale, "cosine", 0.3)
 	mgSetAlpha(upgradeUi, 1, "easeout", 0.3)
 	mgSetUiModal(upgradeUi, true)
 end
