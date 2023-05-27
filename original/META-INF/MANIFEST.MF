@@ -1355,7 +1355,7 @@ Name: assets/menu/localize_ko/rate.png.mtx.mp3
 SHA1-Digest: CkD28oRXDl449YGaHdhnuP3VgyA=
 
 Name: lib/arm64-v8a/libsmashhit.so
-SHA1-Digest: FRqYpjik6oMDwoAlhdHmlZ2hW3c=
+SHA1-Digest: HGGkXyP1HiUwasL0NFM9BJdgn7c=
 
 Name: res/drawable-mdpi-v4/cast_ic_notification_2.png
 SHA1-Digest: ScIgi8J9nz/mj+rEl2ptzIDBHtE=
@@ -1836,7 +1836,7 @@ Name: assets/snd/object/slideloop.ogg.mp3
 SHA1-Digest: VLuhHLjDhPlWawdocHsAVkawvgs=
 
 Name: lib/x86/libsmashhit.so
-SHA1-Digest: nbJ5dLWfidCyzSet5YBr6D20Sgk=
+SHA1-Digest: qoFUyTlF3l34bsajOXz3cE0zz/E=
 
 Name: assets/segments/holodeck/rapid0.mesh.mp3
 SHA1-Digest: kImunRvTxgPplyNk9k/gauCrtV8=
@@ -2376,7 +2376,7 @@ Name: assets/segments/river/tunnel/start.xml.gz.mp3
 SHA1-Digest: +JleO/l9LBaLm0eSRGVYwzjl96M=
 
 Name: AndroidManifest.xml
-SHA1-Digest: 2KX2EPn7tqla4o4qF0GJ+5BIKZU=
+SHA1-Digest: hKFOfDp8wazrtUPv/2i5j5O03M0=
 
 Name: assets/segments/credits/start.mesh.mp3
 SHA1-Digest: D7WUel0QzEKPOGZY6MEPdR/vISg=
@@ -2707,7 +2707,7 @@ Name: assets/hud/localize_es/pausemenu.png.mtx.mp3
 SHA1-Digest: tcbvUeSIGaCL//AMZ7Zx2cJmsfE=
 
 Name: assets/sig.mp3
-SHA1-Digest: aupP2E3B8sXYtwER56UNDXkg7pk=
+SHA1-Digest: uEYy565b6phulP44alNO/Cm/mgs=
 
 Name: assets/menu/loading_dot.png.mtx.mp3
 SHA1-Digest: AeGRg4ga7sDHBjUqkgs1/5Ugiyw=
@@ -6986,7 +6986,7 @@ Name: assets/menu/upgrade_statistics.png.mtx.mp3
 SHA1-Digest: mhFfvhqwS0C9dq1aR9S7I66ZTDk=
 
 Name: lib/armeabi-v7a/libsmashhit.so
-SHA1-Digest: 8E0FkVYLOTcy6Spo4GSQ+DVpv9w=
+SHA1-Digest: +QJFM1RP1bRlsfF11C64EjfKrbA=
 
 Name: assets/segments/night/part3/door.xml.gz.mp3
 SHA1-Digest: CnZggrYiiyvsu4rUFjCFAryzVBM=
