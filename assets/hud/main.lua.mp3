@@ -317,7 +317,7 @@ function frame()
 	lastMultiplier = multiplier
 	
 	ballCount = tonumber(mgGet("level.ballcount"))
-	if distance > 9970 and distance < 10000 and not hintDone then
+	if distance > 11980 and distance < 12000 and not hintDone then
 		hintDone = mgCreateImage("endless_mode.png")
 		mgSetOrigo(hintDone, "center")
 		mgSetPos(hintDone, centerX, centerY)
@@ -616,7 +616,7 @@ function handleCommand(cmd)
 			mgRunDelayed('showSaved()', 1.0)
 		end
 
-		if cp < 10 then
+		if cp < 12 then
 			mgSetText(checkpointText, cp)
 		else
 			mgSetText(checkpointText, ";")
@@ -646,9 +646,10 @@ function handleCommand(cmd)
 	end
 
 	if cmd == "resume" then
-		mgSetScale(resumeUi, 1, 1, "easeout", 0.15)
-		mgSetAlpha(resumeUi, 1, "easeout", 0.15)
-		mgSetUiModal(resumeUi, true)
+		--mgSetScale(resumeUi, 1, 1, "easeout", 0.15)
+		--mgSetAlpha(resumeUi, 1, "easeout", 0.15)
+		--mgSetUiModal(resumeUi, true)
+		handleCommand("showpausemenu")
 	end
 
 	if cmd == "hideresume" then

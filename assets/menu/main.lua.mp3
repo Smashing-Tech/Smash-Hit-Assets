@@ -20,7 +20,7 @@ function getSecond(str)
 	return ""
 end
 
-levelCount = 11
+levelCount = 13
 
 
 function init()
@@ -33,7 +33,7 @@ function init()
 	
 	platform = mgGet("game.platform")
 
-	levelCanvas = mgCreateCanvas(1024*13, 2048)
+	levelCanvas = mgCreateCanvas(1024*15, 2048)
 	mgSetCanvasWindow(levelCanvas, 0, 0, 2048, 1536)
 	mgSetCanvasMovable(levelCanvas, "x")
 	
@@ -290,18 +290,18 @@ function load()
 	mgSetPos(highscoreText, left+325, bottom-74)
 
 	ranks = mgCreateImage("ranks.png")
-	mgSetPos(ranks, left+360, bottom-153)
+	mgSetPos(ranks, left+360, bottom-140)
 
 	scoreInit()
 	
 	rankScore = {}
-	for i=1,15 do
+	for i=1,17 do
 		rankScore[i] = (i-1)*1000
 	end
-	rankScore[12] = 10500
-	rankScore[13] = 11000
-	rankScore[14] = 11500
-	rankScore[15] = 12000
+	rankScore[14] = 12500
+	rankScore[15] = 13000
+	rankScore[16] = 13500
+	rankScore[17] = 14000
 	
 	gameOverShown = false
 	
@@ -323,11 +323,18 @@ function load()
 	mgSetScale(statsBlank, 100, 1)
 	mgSetPos(statsBlank, 0, 420)
 	
-	help = mgCreateUi("help.xml")
+	helpCanvas = mgCreateCanvas(1,1)
+	mgSetOrigo(helpCanvas, "center")
+	mgSetPos(helpCanvas, centerX, centerY)
+	mgSetScale(helpCanvas, 1, 0.6) 
+	mgSetAlpha(helpCanvas, 0)
+	
+	help = mgCreateImage("help.png")
 	mgSetOrigo(help, "center")
-	mgSetPos(help, centerX, centerY)
-	mgSetScale(help, 1, 0.6)
-	mgSetAlpha(help, 0)
+	
+	supportButton = mgCreateUi("supportbutton.xml")
+	mgSetOrigo(supportButton, "center")
+	mgSetPos(supportButton, 0, 310)
 	
 	helpButton = mgCreateUi("helpbutton.xml")
 	mgSetOrigo(helpButton, "bottomright")
@@ -601,8 +608,8 @@ function drawWorld()
 	mgSetColor(highscoreText, .75, .9, .95)
 	mgDraw(highscoreText)
 
-	local y = 100*(displayRank-1)
-	mgSetCrop(ranks, 0, y, 500, y+100)
+	local y = 70*(displayRank-1)
+	mgSetCrop(ranks, 0, y, 390, y+70)
 	mgSetOrigo(ranks, "topleft")
 	mgDraw(ranks)
 
@@ -663,7 +670,7 @@ function drawWorld()
 		if selectedLevel then
 			score = mgGetHighScore(selectedLevel)
 			local lvl = tonumber(selectedLevel)
-			if lvl < 10 then
+			if lvl < 12 then
 			mgSetText(playMenuText, lvl)
 			else
 				mgSetText(playMenuText, ";") -- Endless
@@ -738,7 +745,10 @@ function drawWorld()
 	end
 	mgDraw(dbgMenu)
 	
+	mgPushCanvas(helpCanvas)
 	mgDraw(help)
+	mgDraw(supportButton)
+	mgPopCanvas()
 	
 	local a = mgGetAlpha(upgradeCanvas)
 	if a > 0 then
@@ -836,7 +846,7 @@ function handleCommand(cmd)
 		mgSetCanvasEnabled(levelCanvas, false)
 		mgPlaySound(showSound)
 		mgSetScale(haloCircle, 1.5, 1.2)
-		mgSetScale(haloCircle, 1, 1, "easeout", 0.15)
+		mgSetScale(haloCircle, 1.12, 1.12, "easeout", 0.15)
 		mgSetAlpha(haloCircle, 0)
 		mgSetAlpha(haloCircle, 1, "easeout", 0.05)
 		mgRunDelayed('mgSetAlpha(haloCircle, 0, "easeout", 0.4)', 0.05)
@@ -940,9 +950,9 @@ function handleCommand(cmd)
 			mgSetScale(gameOverContinue, 1, 1)
 			mgSetAlpha(gameOverContinueText, 1)
 			local cp = math.floor(score/1000)
-			if cp > 10 then cp = 10 end
+			if cp > 12 then cp = 12 end
 			continueLevel = cp
-			if cp == 10 then
+			if cp == 12 then
 				mgSetText(gameOverContinueText, ";") -- endless
 			else
 				mgSetText(gameOverContinueText, cp)
@@ -1010,7 +1020,7 @@ function handleCommand(cmd)
 	end
 	
 	if cmd == "activate" then
-		--mgSetPos(levelCanvas, distanceToCanvasPos(tonumber(mgGet("level.distance"))), 0)
+		mgSetPos(levelCanvas, distanceToCanvasPos(tonumber(mgGet("level.distance"))), 0)
 		mgSetCanvasEnabled(levelCanvas, true)
 	end
 
@@ -1062,6 +1072,14 @@ function handleCommand(cmd)
 		mgCommand("game.url http://www.twitter.com/smashhitgame")
 	end
 
+	if cmd == "website" then
+		mgCommand("game.url http://www.smashhitgame.com")
+	end
+
+	if cmd == "support" then
+		mgCommand("game.url http://www.smashhitgame.com/support")
+	end
+
 	if cmd == "rate" then
 		mgCommand("player.rate")
 		if platform == "android" then
@@ -1093,7 +1111,7 @@ function handleCommand(cmd)
 			handleCommand("hidegameover")
 		elseif mgGetAlpha(playMenuCanvas) > 0 then
 			handleCommand("hideplaymenu")
-		elseif mgGetAlpha(help) > 0 then
+		elseif mgGetAlpha(helpCanvas) > 0 then
 			handleCommand("hidehelp")
 		elseif rate ~= -1 and mgGetAlpha(rate) > 0 then
 			handleCommand("hiderate")
@@ -1103,9 +1121,9 @@ function handleCommand(cmd)
 	end
 	
 	if cmd == "showhelp" then
-		mgSetAlpha(help, 1, "easeout", 0.15)
-		mgSetScale(help, 1, 1, "easeout", 0.15)
-		mgSetUiModal(help, true)
+		mgSetAlpha(helpCanvas, 1, "easeout", 0.15)
+		mgSetScale(helpCanvas, 1, 1, "easeout", 0.15)
+		mgSetUiModal(supportButton, true)
 		mgSetCanvasEnabled(levelCanvas, false)
 		mgPlaySound(showSound)
 		mgSetAlpha(glowLine, .5, "easeout", .1)
@@ -1114,9 +1132,9 @@ function handleCommand(cmd)
 	end
 	
 	if cmd == "hidehelp" then
-		mgSetAlpha(help, 0, "easeout", 0.15)
-		mgSetScale(help, 1, 0.6, "easeout", 0.15)
-		mgSetUiModal(help, false)
+		mgSetAlpha(helpCanvas, 0, "easeout", 0.15)
+		mgSetScale(helpCanvas, 1, 0.6, "easeout", 0.15)
+		mgSetUiModal(supportButton, false)
 		mgSetCanvasEnabled(levelCanvas, true)
 		mgPlaySound(hideSound)
 		mgSetAlpha(glowLine, 1)

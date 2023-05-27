@@ -1,0 +1,41 @@
+function init()
+	
+	b = mgCreateBody(0, 0, 0)
+
+	local cr,cg,cb = mgGetColor("color", 1, 1, 1)
+	local w = mgGetFloat("size", 1)
+	local t = mgGetFloat("thickness", 0.1)
+	local r = mgGetFloat("radius", 0.2)
+	vx = mgGetFloat("vx", 1)
+	vy = mgGetFloat("vy", 2)
+	vz = mgGetFloat("vz", 1)
+	
+	mgMaterial("steel")
+	mgShapeChamfer(0.03)
+	mgCreateBox(b, r, r, r)
+
+	mgShapeChamfer(0)
+	mgMaterial("glass")
+	mgColor(cr, cg, cb)
+	mgCreateBox(b, w/2, t, t, -w/2-r)
+	mgCreateBox(b, w/2, t, t, w/2+r)
+	mgCreateBox(b, t, w/2, t, 0, -w/2-r)
+	mgCreateBox(b, t, w/2, t, 0, w/2+r)
+	mgCreateBox(b, t, t, w/2, 0, 0, -w/2-r)
+	mgCreateBox(b, t, t, w/2, 0, 0, w/2+r)
+
+	mgShapeChamfer(0.03)
+	mgMaterial("steel")
+	mgCreateBox(b, r, r, r, -w-r)
+	mgCreateBox(b, r, r, r, w+r)
+	mgCreateBox(b, r, r, r, 0, -w-r)
+	mgCreateBox(b, r, r, r, 0, w+r)
+	mgCreateBox(b, r, r, r, 0, 0, -w-r)
+	mgCreateBox(b, r, r, r, 0, 0, w+r)
+
+	mgCreateBallJoint(0, b, 0, 0, 0)
+end
+
+function tick()
+	mgSetAngVel(b, vx, vy, vz)
+end
