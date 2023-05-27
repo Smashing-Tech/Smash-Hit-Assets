@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: Smash Hit 1.4.2.apk
+apkFileName: Smash Hit 1.4.3.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -21,5 +21,5 @@ usesFramework:
   tag: null
 version: 2.7.0
 versionInfo:
-  versionCode: '10402'
-  versionName: 1.4.2
+  versionCode: '10403'
+  versionName: 1.4.3
