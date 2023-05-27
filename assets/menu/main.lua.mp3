@@ -73,6 +73,8 @@ function init()
 	scrollFrame = 0
 
 	rate = -1
+	ads_icon = -1
+	checkAds()
 end
 
 
@@ -243,15 +245,6 @@ function load()
 	mgSetScale(button_pole, 1, 1)
 	mgSetOrigo(button_pole, "center")
 
-	new_sign = mgCreateImage("new.png")
-	mgSetScale(new_sign, 1, 1)
-	mgSetOrigo(new_sign, "center")
-	if mgGet("game.trymode") == "1" or tonumber(mgGet("player.startcount")) < 2 then
-		mgSetAlpha(new_sign, 0)
-	else
-		mgSetAlpha(new_sign, 0.75)
-	end		
-
 	currentHighscore = mgGetHighScore()
 	displayHighscore = currentHighscore
 	highscoreProgress = 0
@@ -283,7 +276,6 @@ function load()
 	upgrade = mgCreateImage("upgrade.png")
 	upgradeBuy = mgCreateUi("upgrade_buy.xml")
 	mgSetOrigo(upgradeBuy, "center")
-	mgSetPos(upgradeBuy, centerX, 425)
 	upgradeRestore = mgCreateUi("upgrade_restore.xml")
 	mgSetOrigo(upgradeRestore, "center")
 	mgSetPos(upgradeRestore, centerX, 630)
@@ -303,6 +295,18 @@ function load()
 	
 	premiumPrice = mgCreateText("smashhit")
 
+	saleMain = mgCreateImage("hud/sale/smashhit_sale_main.jpg")
+	mgSetPos(saleMain, right-390, top-50)
+	mgSetRot(saleMain, -math.pi/4)
+	salePremium = mgCreateImage("hud/sale/smashhit_sale_premium.png")
+	mgSetPos(salePremium, 340, -46)
+	salePremiumBg = mgCreateImage("hud/sale/smashhit_sale_premium_bg.png")
+	mgSetPos(salePremiumBg, 0, -236)
+	saleText = mgCreateText("numbers", true)
+	mgSetPos(saleText, 1054, 20)
+	premiumDash = mgCreateImage("oldprice_dash.png")
+	mgSetOrigo(premiumDash, "center")
+	mgSetPos(premiumDash, centerX, 570)
 
 	highscoreText = mgCreateText("numbers", true)
 	mgSetScale(highscoreText, 0.5, 0.5)
@@ -608,6 +612,9 @@ function drawWorld()
 	if mgGet("game.premium") ~= "1" then
 		mgSetAlpha(upgradeButton, t)
 		mgDraw(upgradeButton)
+		if mgGet("player.adssale") ~= "0" then
+			mgDraw(saleMain)
+		end
 	end
 	
 	mgSetAlpha(dbgButton, t*0.3)
@@ -629,9 +636,6 @@ function drawWorld()
 	else mgSetCrop(modeButton, 0, 300, 450, 400)
 	end
 	
-	mgSetPos(new_sign, left+345, bottom-250+math.sin(2*mgScriptTime())*10)
-	mgDraw(new_sign)
-
 	if mode ~= 3 then
 		mgDraw(scoreButton)
 
@@ -793,28 +797,62 @@ function drawWorld()
 	end
 	mgDraw(dbgMenu)
 	
+	if ads_icon ~= -1 and mgGet("player.adsshown") == "0" then
+		if mgGet("player.adsonlyfree") == "0" or mgGet("game.premium")=="0" then
+			mgDraw(ads_icon)
+		end
+	end
+
 	local a = mgGetAlpha(upgradeCanvas)
 	if a > 0 then
+		local secLeft = tonumber(mgGet("player.adssale"))
 		mgFullScreenColor(0,0,0,a*0.5)
 		mgPushCanvas(upgradeCanvas)
 		mgDraw(upgrade)
 		local s = math.sin(mgScriptTime()*5)*0.02 + 1.0
 		mgSetScale(upgradeBuy, s, s)
+		local buyOffset = 0
+		if secLeft > 0 then
+			buyOffset = 20
+			mgSetPos(upgradeRestore, centerX, 670)
+		else
+			mgSetPos(upgradeRestore, centerX, 620)
+		end
+		mgSetPos(upgradeBuy, centerX, 425-buyOffset)
 		mgDraw(upgradeBuy)
 		mgDraw(upgradeRestore)
 		mgDraw(upgradeCheckpoints)
 		mgDraw(upgradeGamemodes)
 		mgDraw(upgradeCloud)
 		mgDraw(upgradeStatistics)
-		if mgIsVisible(upgrade) then
-			local price = mgGet("game.premiumprice")
+
+		local price = mgGet("game.premiumprice")
+
+		if price ~= "" then
+			mgSetText(premiumPrice, price)
+			mgSetOrigo(premiumPrice, "center")
+			mgSetColor(premiumPrice, 1, 1, 1)
+			mgSetPos(premiumPrice, centerX-20, 445-buyOffset+30*s)
+			mgSetScale(premiumPrice, s*0.85, s*0.85)
+			mgDraw(premiumPrice)
+		end
+		if secLeft > 0 then
+			local daysLeft = math.floor(0.5+secLeft/3600/24)
+			mgDraw(salePremiumBg)
+			mgDraw(salePremium)
+			mgSetText(saleText, ""..daysLeft)
+			mgSetOrigo(saleText, "center")
+			mgDraw(saleText)
+			
+			price = mgGet("game.premiumorgprice")
 			if price ~= "" then
 				mgSetText(premiumPrice, price)
 				mgSetOrigo(premiumPrice, "center")
-				mgSetColor(premiumPrice, .77, 1, .73)
-				mgSetPos(premiumPrice, centerX-20, 445+30*s)
-				mgSetScale(premiumPrice, s*0.85, s*0.85)
+				mgSetColor(premiumPrice, .65, 0.8, .73)
+				mgSetPos(premiumPrice, centerX-20, 570)
+				mgSetScale(premiumPrice, 0.8)
 				mgDraw(premiumPrice)
+				mgDraw(premiumDash)
 			end
 		end
 		mgPopCanvas()
@@ -839,13 +877,14 @@ function drawWorld()
 	mgSetZ(-1.3)
 	scoreDraw()
 	mgSetZ(0)
-	
+
 	if mgGet("game.purchasing") == "1" then
 		mgFullScreenColor(0,0,0,0.5)
 		waitAngle = waitAngle - 0.1
 		mgSetRot(waitImg, waitAngle)
 		mgDraw(waitImg)
 	end
+
 end
 
 
@@ -862,7 +901,6 @@ end
 
 
 function handleCommand(cmd)
-
 	if cmd == "showoptions" then
 		mgSetUiModal(optionsUi, true)
 		mgSetCanvasEnabled(levelCanvas, false)
@@ -1186,7 +1224,6 @@ function handleCommand(cmd)
 	if cmd == "showmode" then
 		mgSet("game.trymode", "1")
 		mgCommand("game.saveConfig")
-		mgSetAlpha(new_sign, 0, "linear", 0.5)
 		mgRadioSelect(modeMenu, mgGet("player.mode"))
 		mgSetAlpha(modeCanvas, 1, "easeout", 0.15)
 		mgSetScale(modeCanvas, 1, 1, "easeout", 0.15)
@@ -1264,7 +1301,7 @@ function handleCommand(cmd)
 		end
 	end
 	
-	if cmd ~= "" and getFirst(cmd) == "mode" then
+	if cmd ~= "" and startsWith(cmd, "mode") then
 		if mgGet("game.premium") == "1" then
 			mgCommand("game.mode " .. getSecond(cmd))
 			mgRunDelayed('handleCommand("hidemode")', 0.1)
@@ -1274,6 +1311,28 @@ function handleCommand(cmd)
 				handleCommand("showupgrade")
 			end
 		end
+	end
+	
+	if cmd == "checkads" then
+		checkAds()
+	end
+
+	if cmd == "hideads" and ads_icon~=-1 then
+		mgSetScale(ads_icon, 0.5, 0.5, "linear", 0.3)
+		mgSetAlpha(ads_icon, 0, "linear", 0.3)
+		mgCommand("player.adsshown")
+	end
+end
+
+
+function checkAds()
+	if mgGet("player.adsfront") == "1" and tonumber(mgGet("player.startcount")) > 1 then
+		ads_icon = mgCreateUi("user://ads.xml")
+		w,h = mgGetSize(ads_icon)
+		mgSetOrigo(ads_icon, "center")
+		mgSetPos(ads_icon, left+w/2, top+h/2)
+	else
+		ads_icon = -1
 	end
 end
 
